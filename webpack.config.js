@@ -16,7 +16,7 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json"],
 
     alias: {
-      'next-styled': path.join(__dirname, "src")
+      'next-styled': path.join(__dirname, "./src")
     }
   },
 

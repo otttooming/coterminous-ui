@@ -10,7 +10,11 @@
     "moduleResolution": "node",
     "lib": ["dom", "es2015", "es2017"],
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "next-styled": ["./src"]
+    }
   },
   "exclude": ["./node_modules"]
 }
