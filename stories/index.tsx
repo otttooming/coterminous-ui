@@ -3,6 +3,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
+import { Heading } from "next-styled";
 
 const { Button, Welcome } = require("@storybook/react/demo");
 
@@ -17,3 +18,5 @@ storiesOf("Button", module)
   .add("with some emoji", () => (
     <Button onClick={action("clicked")}>😀 😎 👍 💯</Button>
   ));
+
+storiesOf("Heading", module).add("H1", () => <Heading.H1>Heading</Heading.H1>);
