@@ -1,6 +1,9 @@
 import * as React from "react";
 import { H1Style } from "./Heading.style";
-import styled from "styled-components";
+
+// TS error if Styles and StyledComponentClass not explicitly imported for tsconfig declaration export
+// https://github.com/styled-components/styled-components/issues/1063
+import styled, { StyledComponentClass } from "styled-components";
 
 export interface Props
   extends Partial<React.HTMLAttributes<HTMLHeadingElement>> {

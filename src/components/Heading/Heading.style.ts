@@ -1,4 +1,6 @@
-import { css } from "styled-components";
+// TS error if Styles and StyledComponentClass not explicitly imported for tsconfig declaration export
+// https://github.com/styled-components/styled-components/issues/1063
+import { css, Styles, StyledComponentClass } from "styled-components";
 
 const common = css`
   margin: 0 0 0.5rem 0;
