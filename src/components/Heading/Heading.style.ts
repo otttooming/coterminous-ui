@@ -13,3 +13,23 @@ const common = css`
 export const H1Style = css`
   ${common};
 `;
+
+export const H2Style = css`
+  ${common};
+`;
+
+export const H3Style = css`
+  ${common};
+`;
+
+export const H4Style = css`
+  ${common};
+`;
+
+export const H5Style = css`
+  ${common};
+`;
+
+export const H6Style = css`
+  ${common};
+`;

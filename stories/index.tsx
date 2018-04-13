@@ -19,4 +19,13 @@ storiesOf("Button", module)
     <Button onClick={action("clicked")}>😀 😎 👍 💯</Button>
   ));
 
-storiesOf("Heading", module).add("H1", () => <Heading.H1>Heading</Heading.H1>);
+storiesOf("Base", module).add("Heading", () => (
+  <>
+    <Heading.H1>Heading</Heading.H1>
+    <Heading.H2>Heading</Heading.H2>
+    <Heading.H3>Heading</Heading.H3>
+    <Heading.H4>Heading</Heading.H4>
+    <Heading.H5>Heading</Heading.H5>
+    <Heading.H6>Heading</Heading.H6>
+  </>
+));
