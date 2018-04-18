@@ -8,11 +8,18 @@ import {
   H6Style,
 } from "./Heading.style";
 
-// TS error if Styles and StyledComponentClass not explicitly imported for tsconfig declaration export
+// TS error if some components not explicitly imported for tsconfig declaration export
 // https://github.com/styled-components/styled-components/issues/1063
-import styled, { StyledComponentClass } from "styled-components";
+// https://github.com/Microsoft/TypeScript/issues/9944
+import {
+  styled,
+  StyledComponentClass, // Required for tsconfig declaration export
+  NextStyledThemeProps, // Required for tsconfig declaration export
+  Styles, // Required for tsconfig declaration export
+} from "next-styled";
 
-enum TagName {
+// Enum must be exported or 'has or is using private name' error will occur
+export enum TagName {
   H1 = "h1",
   H2 = "h2",
   H3 = "h3",
