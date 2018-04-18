@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "webpack-dev-server",
     "docs": "NODE_ENV=production webpack -p",
