@@ -14,7 +14,7 @@ const Heading_style_1 = require("./Heading.style");
 // TS error if some components not explicitly imported for tsconfig declaration export
 // https://github.com/styled-components/styled-components/issues/1063
 // https://github.com/Microsoft/TypeScript/issues/9944
-const next_styled_1 = require("next-styled");
+const coterminous_styled_1 = require("coterminous-styled");
 // Enum must be exported or 'has or is using private name' error will occur
 var TagName;
 (function (TagName) {
@@ -56,32 +56,32 @@ class HeadingBase extends React.Component {
     }
 }
 exports.Heading = {
-    H1: next_styled_1.styled(HeadingBase).attrs({
+    H1: coterminous_styled_1.styled(HeadingBase).attrs({
         tagName: TagName.H1,
     }) `
     ${Heading_style_1.H1Style};
   `,
-    H2: next_styled_1.styled(HeadingBase).attrs({
+    H2: coterminous_styled_1.styled(HeadingBase).attrs({
         tagName: TagName.H2,
     }) `
     ${Heading_style_1.H2Style};
   `,
-    H3: next_styled_1.styled(HeadingBase).attrs({
+    H3: coterminous_styled_1.styled(HeadingBase).attrs({
         tagName: TagName.H3,
     }) `
     ${Heading_style_1.H3Style};
   `,
-    H4: next_styled_1.styled(HeadingBase).attrs({
+    H4: coterminous_styled_1.styled(HeadingBase).attrs({
         tagName: TagName.H4,
     }) `
     ${Heading_style_1.H4Style};
   `,
-    H5: next_styled_1.styled(HeadingBase).attrs({
+    H5: coterminous_styled_1.styled(HeadingBase).attrs({
         tagName: TagName.H5,
     }) `
     ${Heading_style_1.H5Style};
   `,
-    H6: next_styled_1.styled(HeadingBase).attrs({
+    H6: coterminous_styled_1.styled(HeadingBase).attrs({
         tagName: TagName.H6,
     }) `
     ${Heading_style_1.H6Style};

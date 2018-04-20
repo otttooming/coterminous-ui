@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
-import { StyledComponentClass, NextStyledThemeProps } from "next-styled";
+import { StyledComponentClass, NextStyledThemeProps } from "coterminous-styled";
 export declare enum TagName {
     H1 = "h1",
     H2 = "h2",

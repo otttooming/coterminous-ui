@@ -12,7 +12,7 @@
     "baseUrl": "./",
     "outDir": "./dist",
     "paths": {
-      "next-styled": ["./src"]
+      "coterminous-styled": ["./src"]
     }
   },
   "exclude": ["./node_modules"]

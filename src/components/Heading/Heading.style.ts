@@ -9,7 +9,7 @@ import {
   InterpolationFunction, // Required for tsconfig declaration export
   ThemeProps, // Required for tsconfig declaration export
   NextStyledThemeProps, // Required for tsconfig declaration export
-} from "next-styled";
+} from "coterminous-styled";
 
 const common = css`
   margin: 0 0 0.5rem 0;

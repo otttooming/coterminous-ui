@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
-      "next-styled": path.join(__dirname, "../src"),
+      "coterminous-styled": path.join(__dirname, "../src"),
     },
   },
   module: {

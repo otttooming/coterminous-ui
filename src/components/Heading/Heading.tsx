@@ -16,7 +16,7 @@ import {
   StyledComponentClass, // Required for tsconfig declaration export
   NextStyledThemeProps, // Required for tsconfig declaration export
   Styles, // Required for tsconfig declaration export
-} from "next-styled";
+} from "coterminous-styled";
 
 // Enum must be exported or 'has or is using private name' error will occur
 export enum TagName {
