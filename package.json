@@ -1,7 +1,11 @@
 {
   "name": "coterminous-styled",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reusable components for React projects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/otttooming/coterminous-styled.git"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
