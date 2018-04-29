@@ -3,7 +3,13 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { ThemeProvider, Heading } from "coterminous-styled";
+import {
+  ThemeProvider,
+  Heading,
+  FormProvider,
+  FormContext,
+  TextInputField,
+} from "coterminous-styled";
 
 const { Button, Welcome } = require("@storybook/react/demo");
 
@@ -31,3 +37,29 @@ storiesOf("Base", module).add("Heading", () => (
     </>
   </ThemeProvider>
 ));
+
+storiesOf("Forms", module)
+  .add("Form", () => (
+    <ThemeProvider
+      theme={{ primaryColor: "red", primaryColorInverted: "blue" }}
+    >
+      <FormProvider>
+        <FormContext.Consumer>
+          {({ setField }: any) => (
+            <button onClick={() => setField({ field1: Math.random() })}>
+              a
+            </button>
+          )}
+        </FormContext.Consumer>
+      </FormProvider>
+    </ThemeProvider>
+  ))
+  .add("TextInputField", () => (
+    <ThemeProvider
+      theme={{ primaryColor: "red", primaryColorInverted: "blue" }}
+    >
+      <FormProvider>
+        <TextInputField />
+      </FormProvider>
+    </ThemeProvider>
+  ));
