@@ -14,9 +14,7 @@ export class TextInputField extends React.Component<Props, State> {
     return (
       <FormContext.Consumer>
         {({ actions: { setField } }) => (
-          <TextInput
-            onChange={() => setField({ field1: { value: Math.random() } })}
-          />
+          <TextInput onChange={value => setField({ field1: { value } })} />
         )}
       </FormContext.Consumer>
     );

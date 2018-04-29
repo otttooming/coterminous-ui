@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface Props {
-  onChange: () => void;
+  onChange: (value: string) => void;
 }
 
 interface State {}
@@ -15,7 +15,9 @@ export class TextInput extends React.Component<Props, State> {
     return <input type="text" onChange={this.handleChange} />;
   }
 
-  handleChange = () => {
-    this.props.onChange();
+  handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+
+    this.props.onChange(value);
   };
 }
