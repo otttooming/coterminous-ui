@@ -1,8 +1,8 @@
 import * as React from "react";
-import { FormContext } from "coterminous-styled";
+import { FormContext, FormState, withFormConsumer } from "coterminous-styled";
 import { TextInput, TagName } from "./TextInput";
 
-export interface Props {
+export interface Props extends Partial<FormState> {
   name: string;
   tagName?: TagName;
 }
@@ -14,28 +14,29 @@ class TextInputFieldBase extends React.Component<Props, State> {
   }
 
   render() {
-    const { name, tagName } = this.props;
+    const { name, tagName, actions } = this.props;
+    const { setField } = actions;
 
     switch (tagName) {
       case TagName.Input:
         return (
-          <FormContext.Consumer>
-            {({ actions: { setField } }) => (
-              <TextInput.Input
-                onChange={value => setField({ [name]: { value } })}
-              />
-            )}
-          </FormContext.Consumer>
+          <TextInput.Input
+            onChange={value =>
+              setField({
+                [name]: { value },
+              })
+            }
+          />
         );
       case TagName.TextArea:
         return (
-          <FormContext.Consumer>
-            {({ actions: { setField } }) => (
-              <TextInput.TextArea
-                onChange={value => setField({ [name]: { value } })}
-              />
-            )}
-          </FormContext.Consumer>
+          <TextInput.TextArea
+            onChange={value =>
+              setField({
+                [name]: { value },
+              })
+            }
+          />
         );
       default:
         return null;
@@ -43,11 +44,13 @@ class TextInputFieldBase extends React.Component<Props, State> {
   }
 }
 
+const TextInputFieldWithFormConsumer = withFormConsumer(TextInputFieldBase);
+
 export const TextInputField = {
   Input: (props: Props) => (
-    <TextInputFieldBase {...props} tagName={TagName.Input} />
+    <TextInputFieldWithFormConsumer {...props} tagName={TagName.Input} />
   ),
   TextArea: (props: Props) => (
-    <TextInputFieldBase {...props} tagName={TagName.TextArea} />
+    <TextInputFieldWithFormConsumer {...props} tagName={TagName.TextArea} />
   ),
 };
