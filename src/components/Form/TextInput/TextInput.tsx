@@ -17,7 +17,7 @@ export enum TagName {
   TextArea = "h1",
 }
 
-interface Props
+export interface Props
   extends Partial<
       React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
     > {
