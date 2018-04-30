@@ -59,7 +59,10 @@ storiesOf("Forms", module)
       theme={{ primaryColor: "red", primaryColorInverted: "blue" }}
     >
       <FormProvider>
-        <TextInputField name="test_field" />
+        <>
+          <TextInputField.Input name="test_field" />
+          <TextInputField.TextArea name="test_field_textarea" />
+        </>
       </FormProvider>
     </ThemeProvider>
   ));
