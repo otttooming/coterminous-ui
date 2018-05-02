@@ -1,26 +1,29 @@
 import * as React from "react";
 import { FormContext, FormState, withFormConsumer } from "coterminous-styled";
-import { TextInput, TagName } from "./TextInput";
+import { TextInput, TextInputProps, TagName } from "./TextInput";
 
-export interface Props extends Partial<FormState> {
+interface Props {
   name: string;
   tagName?: TagName;
 }
 interface State {}
 
-class TextInputFieldBase extends React.Component<Props, State> {
-  constructor(props: Props) {
+export type TextInputFieldProps = Props & Partial<FormState> & TextInputProps;
+
+class TextInputFieldBase extends React.Component<TextInputFieldProps, State> {
+  constructor(props: TextInputFieldProps) {
     super(props);
   }
 
   render() {
-    const { name, tagName, actions } = this.props;
+    const { name, tagName, actions, ...rest } = this.props;
     const { setField } = actions;
 
     switch (tagName) {
       case TagName.Input:
         return (
           <TextInput.Input
+            {...rest}
             onChange={value =>
               setField({
                 [name]: { value },
@@ -31,6 +34,7 @@ class TextInputFieldBase extends React.Component<Props, State> {
       case TagName.TextArea:
         return (
           <TextInput.TextArea
+            {...rest}
             onChange={value =>
               setField({
                 [name]: { value },
@@ -47,10 +51,10 @@ class TextInputFieldBase extends React.Component<Props, State> {
 const TextInputFieldWithFormConsumer = withFormConsumer(TextInputFieldBase);
 
 export const TextInputField = {
-  Input: (props: Props) => (
+  Input: (props: TextInputFieldProps) => (
     <TextInputFieldWithFormConsumer {...props} tagName={TagName.Input} />
   ),
-  TextArea: (props: Props) => (
+  TextArea: (props: TextInputFieldProps) => (
     <TextInputFieldWithFormConsumer {...props} tagName={TagName.TextArea} />
   ),
 };

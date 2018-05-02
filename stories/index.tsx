@@ -60,8 +60,11 @@ storiesOf("Forms", module)
     >
       <FormProvider>
         <>
-          <TextInputField.Input name="test_field" />
-          <TextInputField.TextArea name="test_field_textarea" />
+          <TextInputField.Input name="test_field" label="Label title" />
+          <TextInputField.TextArea
+            name="test_field_textarea"
+            label="Label title"
+          />
         </>
       </FormProvider>
     </ThemeProvider>

@@ -10,6 +10,7 @@ import {
   NextStyledThemeProps, // Required for tsconfig declaration export
   Styles, // Required for tsconfig declaration export
 } from "coterminous-styled";
+import { ControlWrapper } from "../ControlWrapper/ControlWrapper";
 
 // Enum must be exported or 'has or is using private name' error will occur
 export enum TagName {
@@ -17,11 +18,9 @@ export enum TagName {
   TextArea = "h1",
 }
 
-export interface Props
-  extends Partial<
-      React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
-    > {
-  onChange: (
+export interface Props {
+  label: React.ReactNode;
+  onChange?: (
     value: string | React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   tagName?: TagName;
@@ -30,7 +29,10 @@ export interface Props
 
 interface State {}
 
-class TextInputBase extends React.Component<Props, State> {
+export type TextInputProps = Props &
+  Partial<React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement>>;
+
+class TextInputBase extends React.Component<TextInputProps, State> {
   constructor(props: Props) {
     super(props);
   }
@@ -47,15 +49,23 @@ class TextInputBase extends React.Component<Props, State> {
 
     switch (tagName) {
       case TagName.Input:
-        return (
-          <input {...attributes} type="text" onChange={this.handleChange} />
+        return this.renderControlWrapper(
+          <input {...attributes} type="text" onChange={this.handleChange} />,
         );
       case TagName.TextArea:
-        return <textarea {...attributes} onChange={this.handleChange} />;
+        return this.renderControlWrapper(
+          <textarea {...attributes} onChange={this.handleChange} />,
+        );
       default:
         return null;
     }
   }
+
+  renderControlWrapper = (element: React.ReactNode) => {
+    const { label } = this.props;
+
+    return <ControlWrapper label={label}>{element}</ControlWrapper>;
+  };
 
   handleChange = (
     event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
