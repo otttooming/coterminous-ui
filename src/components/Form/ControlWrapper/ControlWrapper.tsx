@@ -8,7 +8,7 @@ import {
   NextStyledThemeProps, // Required for tsconfig declaration export
   Styles, // Required for tsconfig declaration export
 } from "coterminous-styled";
-import { ControlWrapperStyle } from "./controlWrapper.style";
+import { ControlWrapperStyle, LabelWrapper } from "./controlWrapper.style";
 
 interface Props extends Partial<React.HTMLAttributes<HTMLDivElement>> {
   label: React.ReactNode;
@@ -23,10 +23,10 @@ class ControlWrapperBase extends React.Component<Props, State> {
 
     return (
       <div className={className}>
-        <span>
+        <LabelWrapper>
           <label htmlFor="">{label}</label>
           {isRequired && <abbr title="required">*</abbr>}
-        </span>
+        </LabelWrapper>
         {children}
       </div>
     );
