@@ -1,24 +1,38 @@
 import * as React from "react";
+// TS error if some components not explicitly imported for tsconfig declaration export
+// https://github.com/styled-components/styled-components/issues/1063
+// https://github.com/Microsoft/TypeScript/issues/9944
+import {
+  styled,
+  StyledComponentClass, // Required for tsconfig declaration export
+  NextStyledThemeProps, // Required for tsconfig declaration export
+  Styles, // Required for tsconfig declaration export
+} from "coterminous-styled";
+import { ControlWrapperStyle } from "./controlWrapper.style";
 
-interface Props {
+interface Props extends Partial<React.HTMLAttributes<HTMLDivElement>> {
   label: React.ReactNode;
   isRequired?: boolean;
 }
 
 interface State {}
 
-export class ControlWrapper extends React.Component<Props, State> {
+class ControlWrapperBase extends React.Component<Props, State> {
   render() {
-    const { children, label, isRequired } = this.props;
+    const { children, className, label, isRequired } = this.props;
 
     return (
-      <p>
+      <div className={className}>
         <span>
           <label htmlFor="">{label}</label>
           {isRequired && <abbr title="required">*</abbr>}
         </span>
         {children}
-      </p>
+      </div>
     );
   }
 }
+
+export const ControlWrapper = styled(ControlWrapperBase)`
+  ${ControlWrapperStyle};
+`;
