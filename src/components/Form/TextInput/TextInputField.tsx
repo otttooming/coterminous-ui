@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormContext, FormState, withFormConsumer } from "coterminous-styled";
 import { TextInput, TextInputProps, TagName } from "./TextInput";
 
-interface Props {
+export interface Props {
   name: string;
   tagName?: TagName;
 }

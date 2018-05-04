@@ -10,7 +10,7 @@ import {
 } from "coterminous-styled";
 import { ControlWrapperStyle, LabelWrapper } from "./controlWrapper.style";
 
-interface Props extends Partial<React.HTMLAttributes<HTMLDivElement>> {
+export interface Props extends Partial<React.HTMLAttributes<HTMLDivElement>> {
   label: React.ReactNode;
   isRequired?: boolean;
 }

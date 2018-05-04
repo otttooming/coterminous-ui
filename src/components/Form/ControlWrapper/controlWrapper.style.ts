@@ -1,3 +1,5 @@
+import * as React from "react";
+
 // TS error if some components not explicitly imported for tsconfig declaration export
 // https://github.com/styled-components/styled-components/issues/1063
 // https://github.com/Microsoft/TypeScript/issues/9944
