@@ -14,5 +14,6 @@ exports.Heading = Heading_1.Heading;
 var Form_1 = require("./components/Form/Form");
 exports.FormProvider = Form_1.FormProvider;
 exports.FormContext = Form_1.FormContext;
+exports.withFormConsumer = Form_1.withFormConsumer;
 var TextInputField_1 = require("./components/Form/TextInput/TextInputField");
 exports.TextInputField = TextInputField_1.TextInputField;

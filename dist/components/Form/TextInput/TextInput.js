@@ -15,6 +15,7 @@ const textInput_style_1 = require("./textInput.style");
 // https://github.com/styled-components/styled-components/issues/1063
 // https://github.com/Microsoft/TypeScript/issues/9944
 const coterminous_styled_1 = require("coterminous-styled");
+const ControlWrapper_1 = require("../ControlWrapper/ControlWrapper");
 // Enum must be exported or 'has or is using private name' error will occur
 var TagName;
 (function (TagName) {
@@ -24,6 +25,10 @@ var TagName;
 class TextInputBase extends React.Component {
     constructor(props) {
         super(props);
+        this.renderControlWrapper = (element) => {
+            const { label } = this.props;
+            return React.createElement(ControlWrapper_1.ControlWrapper, { label: label }, element);
+        };
         this.handleChange = (event) => {
             const value = event.currentTarget.value;
             this.props.onChange(value);
@@ -34,9 +39,9 @@ class TextInputBase extends React.Component {
         const attributes = Object.assign({}, restProps, { className });
         switch (tagName) {
             case TagName.Input:
-                return (React.createElement("input", Object.assign({}, attributes, { type: "text", onChange: this.handleChange })));
+                return this.renderControlWrapper(React.createElement("input", Object.assign({}, attributes, { type: "text", onChange: this.handleChange })));
             case TagName.TextArea:
-                return React.createElement("textarea", Object.assign({}, attributes, { onChange: this.handleChange }));
+                return this.renderControlWrapper(React.createElement("textarea", Object.assign({}, attributes, { onChange: this.handleChange })));
             default:
                 return null;
         }

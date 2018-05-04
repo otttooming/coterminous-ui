@@ -22,3 +22,12 @@ class FormProvider extends React.Component {
     }
 }
 exports.FormProvider = FormProvider;
+function withFormConsumer(Component) {
+    return class FormConsumer extends React.Component {
+        render() {
+            const props = this.props;
+            return (React.createElement(exports.FormContext.Consumer, null, consumerProps => React.createElement(Component, Object.assign({}, consumerProps, props))));
+        }
+    };
+}
+exports.withFormConsumer = withFormConsumer;
