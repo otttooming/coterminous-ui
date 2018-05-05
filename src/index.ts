@@ -9,7 +9,7 @@ export {
   StyledComponentClass,
   InterpolationFunction,
   ThemeProps,
-  NextStyledThemeProps,
+  CoterminousStyledThemeProps,
 } from "./common/styles/styledComponents";
 
 export { rotate360 } from "./common/styles/keyframes";

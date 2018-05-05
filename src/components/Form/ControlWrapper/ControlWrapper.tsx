@@ -5,7 +5,7 @@ import * as React from "react";
 import {
   styled,
   StyledComponentClass, // Required for tsconfig declaration export
-  NextStyledThemeProps, // Required for tsconfig declaration export
+  CoterminousStyledThemeProps, // Required for tsconfig declaration export
   Styles, // Required for tsconfig declaration export
 } from "coterminous-styled";
 import { ControlWrapperStyle, LabelWrapper } from "./controlWrapper.style";

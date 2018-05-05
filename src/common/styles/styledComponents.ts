@@ -12,7 +12,7 @@ import {
   ThemeProps, // Required for tsconfig declaration export
 } from "styled-components";
 
-import { NextStyledThemeProps } from "./theme";
+import { CoterminousStyledThemeProps } from "./theme";
 
 const {
   default: styled,
@@ -20,7 +20,9 @@ const {
   injectGlobal,
   keyframes,
   ThemeProvider,
-} = styledComponents as ThemedStyledComponentsModule<NextStyledThemeProps>;
+} = styledComponents as ThemedStyledComponentsModule<
+  CoterminousStyledThemeProps
+>;
 
 export {
   styled,
@@ -32,5 +34,5 @@ export {
   StyledComponentClass,
   InterpolationFunction,
   ThemeProps,
-  NextStyledThemeProps,
+  CoterminousStyledThemeProps,
 };

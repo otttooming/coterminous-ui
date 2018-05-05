@@ -8,7 +8,7 @@ import {
   StyledComponentClass, // Required for tsconfig declaration export
   InterpolationFunction, // Required for tsconfig declaration export
   ThemeProps, // Required for tsconfig declaration export
-  NextStyledThemeProps, // Required for tsconfig declaration export
+  CoterminousStyledThemeProps, // Required for tsconfig declaration export
 } from "coterminous-styled";
 
 const common = css`
