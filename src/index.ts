@@ -12,6 +12,8 @@ export {
   CoterminousStyledThemeProps,
 } from "./common/styles/styledComponents";
 
+export { theme } from "./common/styles/theme";
+
 export { rotate360 } from "./common/styles/keyframes";
 
 export { Heading } from "./components/Heading/Heading";

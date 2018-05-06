@@ -16,7 +16,6 @@ const common = css`
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
-  color: ${props => props.theme.primaryColor};
 `;
 
 export const H1Style = css`

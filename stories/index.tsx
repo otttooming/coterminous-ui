@@ -9,6 +9,7 @@ import {
   FormProvider,
   FormContext,
   TextInputField,
+  theme,
 } from "coterminous-styled";
 
 const { Button, Welcome } = require("@storybook/react/demo");
@@ -26,7 +27,7 @@ storiesOf("Button", module)
   ));
 
 storiesOf("Base", module).add("Heading", () => (
-  <ThemeProvider theme={{ primaryColor: "red", primaryColorInverted: "blue" }}>
+  <ThemeProvider theme={theme}>
     <>
       <Heading.H1>Heading</Heading.H1>
       <Heading.H2>Heading</Heading.H2>
@@ -40,9 +41,7 @@ storiesOf("Base", module).add("Heading", () => (
 
 storiesOf("Forms", module)
   .add("Form", () => (
-    <ThemeProvider
-      theme={{ primaryColor: "red", primaryColorInverted: "blue" }}
-    >
+    <ThemeProvider theme={theme}>
       <FormProvider>
         <FormContext.Consumer>
           {({ setField }: any) => (
@@ -55,9 +54,7 @@ storiesOf("Forms", module)
     </ThemeProvider>
   ))
   .add("TextInputField", () => (
-    <ThemeProvider
-      theme={{ primaryColor: "red", primaryColorInverted: "blue" }}
-    >
+    <ThemeProvider theme={theme}>
       <FormProvider>
         <>
           <TextInputField.Input name="test_field" label="Label title" />
