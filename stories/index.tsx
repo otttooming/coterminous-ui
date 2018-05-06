@@ -10,6 +10,7 @@ import {
   FormContext,
   TextInputField,
   theme,
+  Section,
 } from "coterminous-styled";
 
 const { Button, Welcome } = require("@storybook/react/demo");
@@ -56,13 +57,13 @@ storiesOf("Forms", module)
   .add("TextInputField", () => (
     <ThemeProvider theme={theme}>
       <FormProvider>
-        <>
+        <Section>
           <TextInputField.Input name="test_field" label="Label title" />
           <TextInputField.TextArea
             name="test_field_textarea"
             label="Label title"
           />
-        </>
+        </Section>
       </FormProvider>
     </ThemeProvider>
   ));

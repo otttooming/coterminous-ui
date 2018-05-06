@@ -26,3 +26,5 @@ export {
 } from "./components/Form/Form";
 
 export { TextInputField } from "./components/Form/TextInput/TextInputField";
+
+export { Section } from "./components/Section/Section";
