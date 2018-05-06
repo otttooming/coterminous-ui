@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // https://github.com/Microsoft/TypeScript/issues/9944
 const coterminous_styled_1 = require("coterminous-styled");
 const common = coterminous_styled_1.css `
-  margin: 0 0 ${props => props.theme.spacing.medium} 0;
-`;
-exports.LabelWrapper = coterminous_styled_1.styled.div `
+  background-color: ${props => props.theme.background.section};
+  border-radius: ${props => props.theme.border.radius.small};
   margin-bottom: ${props => props.theme.spacing.normal};
+  padding: ${props => props.theme.spacing.large};
 `;
-exports.ControlWrapperStyle = coterminous_styled_1.css `
+exports.sectionStyle = coterminous_styled_1.css `
   ${common};
 `;

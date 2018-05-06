@@ -9,7 +9,6 @@ const common = coterminous_styled_1.css `
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
-  color: ${props => props.theme.primaryColor};
 `;
 exports.H1Style = coterminous_styled_1.css `
   ${common};

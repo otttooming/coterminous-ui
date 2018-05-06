@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
-import { StyledComponentClass, NextStyledThemeProps } from "coterminous-styled";
+import { StyledComponentClass, CoterminousStyledThemeProps } from "coterminous-styled";
 export declare enum TagName {
     Input = "input",
     TextArea = "h1",
@@ -15,12 +15,12 @@ export declare type TextInputProps = Props & Partial<React.HTMLAttributes<HTMLIn
 export declare const TextInput: {
     Input: StyledComponentClass<Props & {
         tagName: TagName;
-    }, NextStyledThemeProps, Pick<Props, "label" | "className" | "onChange" | "tagName"> & {
-        theme?: NextStyledThemeProps;
+    }, CoterminousStyledThemeProps, Pick<Props, "label" | "className" | "onChange" | "tagName"> & {
+        theme?: CoterminousStyledThemeProps;
     }>;
     TextArea: StyledComponentClass<Props & {
         tagName: TagName;
-    }, NextStyledThemeProps, Pick<Props, "label" | "className" | "onChange" | "tagName"> & {
-        theme?: NextStyledThemeProps;
+    }, CoterminousStyledThemeProps, Pick<Props, "label" | "className" | "onChange" | "tagName"> & {
+        theme?: CoterminousStyledThemeProps;
     }>;
 };
