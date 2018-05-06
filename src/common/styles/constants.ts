@@ -26,8 +26,12 @@ export const color: ColorProps = {
 
 export interface BackgroundProps {
   main: string;
+  input: string;
 }
-export const background: BackgroundProps = { main: "rgba(186, 0, 251, .15)" };
+export const background: BackgroundProps = {
+  main: "rgba(186, 0, 251, .15)",
+  input: "rgba(186, 0, 251, .15)",
+};
 
 export interface BorderProps {
   radius: BorderRadiusProps;
