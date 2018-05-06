@@ -16,12 +16,14 @@ export interface ColorProps {
   dark: string;
   red: string;
   warm: string;
+  white: string;
 }
 
 export const color: ColorProps = {
   dark: "#000",
   red: "#a30000",
   warm: "#ffc000",
+  white: "#fff",
 };
 
 export interface BackgroundProps {
