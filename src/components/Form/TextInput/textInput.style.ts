@@ -11,13 +11,26 @@ import {
   CoterminousStyledThemeProps, // Required for tsconfig declaration export
 } from "coterminous-styled";
 
+const reset = css`
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+`;
+
 const common = css`
-  margin: 0 0 0.5rem 0;
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
+  border-radius: ${props => props.theme.border.radius.medium};
+  background-color: ${props => props.theme.background.input};
 `;
 
 export const TextInputStyle = css`
+  ${reset};
   ${common};
 `;

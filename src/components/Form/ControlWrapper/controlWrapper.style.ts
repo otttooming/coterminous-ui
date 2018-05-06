@@ -14,11 +14,11 @@ import {
 } from "coterminous-styled";
 
 const common = css`
-  margin: 0 0 1rem 0;
+  margin: 0 0 ${props => props.theme.spacing.medium} 0;
 `;
 
 export const LabelWrapper = styled.div`
-  margin-bottom: 1em;
+  margin-bottom: ${props => props.theme.spacing.normal};
 `;
 
 export const ControlWrapperStyle = css`
