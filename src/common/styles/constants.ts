@@ -34,13 +34,13 @@ export interface BorderProps {
 }
 
 export interface BorderRadiusProps {
-  small: number;
-  medium: number;
-  large: number;
+  small: string;
+  medium: string;
+  large: string;
 }
 
 export const border: BorderProps = {
-  radius: { small: 4, medium: 16, large: 24 },
+  radius: { small: "4px", medium: "16px", large: "24px" },
 };
 
 export interface SpacingProps {
