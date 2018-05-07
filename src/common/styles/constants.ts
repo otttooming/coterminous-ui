@@ -33,7 +33,7 @@ export interface BackgroundProps {
 }
 export const background: BackgroundProps = {
   main: "rgba(186, 0, 251, .15)",
-  input: "rgba(186, 0, 251, .15)",
+  input: "#9109c7",
   section: "#670b88",
 };
 

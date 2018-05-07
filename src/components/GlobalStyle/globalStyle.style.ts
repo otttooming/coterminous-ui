@@ -28,6 +28,7 @@ export const globalStyleCss = css`
   body {
     overflow-x: hidden;
     margin: 0;
+    line-height: 1.2;
     font-family: ${typeface.name.primary};
     color: ${color.white};
   }

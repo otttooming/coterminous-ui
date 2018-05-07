@@ -20,17 +20,25 @@ const reset = css`
   white-space: normal;
   background: none;
   line-height: 1;
+  color: inherit;
+  font-size: inherit;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const common = css`
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
-  border-radius: ${props => props.theme.border.radius.medium};
+  padding-left: ${props => props.theme.spacing.medium};
+  border-radius: ${props => props.theme.border.radius.small};
   background-color: ${props => props.theme.background.input};
 `;
 
 export const TextInputStyle = css`
   ${reset};
   ${common};
+  line-height: 48px;
+  height: 48px;
 `;
