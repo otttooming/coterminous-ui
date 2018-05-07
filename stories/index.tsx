@@ -61,6 +61,8 @@ storiesOf("Forms", module)
         <GlobalStyle />
         <FormProvider>
           <Section>
+            <Heading.H1>TextInputField</Heading.H1>
+
             <TextInputField.Input name="test_field" label="Label title" />
             <TextInputField.TextArea
               name="test_field_textarea"

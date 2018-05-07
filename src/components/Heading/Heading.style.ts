@@ -12,10 +12,8 @@ import {
 } from "coterminous-styled";
 
 const common = css`
-  margin: 0 0 0.5rem 0;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
+  margin: 0 0 ${props => props.theme.spacing.medium} 0;
+  font-weight: ${props => props.theme.typeface.weight.bold};
 `;
 
 export const H1Style = css`
