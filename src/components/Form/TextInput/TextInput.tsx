@@ -64,7 +64,11 @@ class TextInputBase extends React.Component<TextInputProps, State> {
   renderControlWrapper = (element: React.ReactNode) => {
     const { label } = this.props;
 
-    return <ControlWrapper label={label}>{element}</ControlWrapper>;
+    return (
+      <ControlWrapper {...extractControlWrapperProps(this.props)}>
+        {element}
+      </ControlWrapper>
+    );
   };
 
   handleChange = (
