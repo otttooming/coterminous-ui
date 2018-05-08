@@ -11,6 +11,7 @@ import {
   Styles, // Required for tsconfig declaration export
 } from "coterminous-styled";
 import {
+  ControlWrapperInternalProps, // Required due to TS export requirements. https://github.com/Microsoft/TypeScript/issues/9944
   ControlWrapper,
   ControlWrapperProps,
 } from "../ControlWrapper/ControlWrapper";

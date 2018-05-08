@@ -10,13 +10,13 @@ import {
 } from "coterminous-styled";
 import { ControlWrapperStyle, LabelWrapper } from "./controlWrapper.style";
 
-export interface Props {
+export interface ControlWrapperInternalProps {
   label: React.ReactNode;
   isRequired?: boolean;
   className?: string;
 }
 
-export type ControlWrapperProps = Props;
+export type ControlWrapperProps = ControlWrapperInternalProps;
 
 interface State {}
 
