@@ -10,14 +10,17 @@ import {
 } from "coterminous-styled";
 import { ControlWrapperStyle, LabelWrapper } from "./controlWrapper.style";
 
-export interface Props extends Partial<React.HTMLAttributes<HTMLDivElement>> {
+export interface Props {
   label: React.ReactNode;
   isRequired?: boolean;
+  className?: string;
 }
+
+export type ControlWrapperProps = Props;
 
 interface State {}
 
-class ControlWrapperBase extends React.Component<Props, State> {
+class ControlWrapperBase extends React.Component<ControlWrapperProps, State> {
   render() {
     const { children, className, label, isRequired } = this.props;
 

@@ -10,7 +10,11 @@ import {
   CoterminousStyledThemeProps, // Required for tsconfig declaration export
   Styles, // Required for tsconfig declaration export
 } from "coterminous-styled";
-import { ControlWrapper } from "../ControlWrapper/ControlWrapper";
+import {
+  ControlWrapper,
+  ControlWrapperProps,
+} from "../ControlWrapper/ControlWrapper";
+import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
 
 // Enum must be exported or 'has or is using private name' error will occur
 export enum TagName {
@@ -19,21 +23,17 @@ export enum TagName {
 }
 
 export interface Props {
-  label: React.ReactNode;
-  onChange?: (
-    value: string | React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  onChange?: (value: string) => void;
   tagName?: TagName;
   className?: string;
 }
 
 interface State {}
 
-export type TextInputProps = Props &
-  Partial<React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement>>;
+export type TextInputProps = Props & ControlWrapperProps;
 
 class TextInputBase extends React.Component<TextInputProps, State> {
-  constructor(props: Props) {
+  constructor(props: TextInputProps) {
     super(props);
   }
 
