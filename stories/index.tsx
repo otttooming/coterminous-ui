@@ -67,6 +67,7 @@ storiesOf("Forms", module)
             <TextInputField.TextArea
               name="test_field_textarea"
               label="Label title"
+              isRequired={true}
             />
           </Section>
         </FormProvider>
