@@ -21,6 +21,7 @@ exports.globalStyleCss = coterminous_styled_1.css `
   body {
     overflow-x: hidden;
     margin: 0;
+    line-height: 1.2;
     font-family: ${constants_1.typeface.name.primary};
     color: ${constants_1.color.white};
   }

@@ -5,10 +5,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // https://github.com/Microsoft/TypeScript/issues/9944
 const coterminous_styled_1 = require("coterminous-styled");
 const common = coterminous_styled_1.css `
-  margin: 0 0 0.5rem 0;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
+  margin: 0 0 ${props => props.theme.spacing.medium} 0;
+  font-weight: ${props => props.theme.typeface.weight.bold};
 `;
 exports.H1Style = coterminous_styled_1.css `
   ${common};
