@@ -1,26 +1,24 @@
-/// <reference types="react" />
-import * as React from "react";
 import { StyledComponentClass, CoterminousStyledThemeProps } from "coterminous-styled";
+import { ControlWrapperInternalProps, ControlWrapperProps } from "../ControlWrapper/ControlWrapper";
 export declare enum TagName {
     Input = "input",
     TextArea = "h1",
 }
 export interface Props {
-    label: React.ReactNode;
-    onChange?: (value: string | React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    onChange?: (value: string) => void;
     tagName?: TagName;
     className?: string;
 }
-export declare type TextInputProps = Props & Partial<React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement>>;
+export declare type TextInputProps = Props & ControlWrapperProps;
 export declare const TextInput: {
-    Input: StyledComponentClass<Props & {
+    Input: StyledComponentClass<Props & ControlWrapperInternalProps & {
         tagName: TagName;
-    }, CoterminousStyledThemeProps, Pick<Props, "label" | "className" | "onChange" | "tagName"> & {
+    }, CoterminousStyledThemeProps, Pick<TextInputProps, "label" | "className" | "onChange" | "tagName" | "isRequired"> & {
         theme?: CoterminousStyledThemeProps;
     }>;
-    TextArea: StyledComponentClass<Props & {
+    TextArea: StyledComponentClass<Props & ControlWrapperInternalProps & {
         tagName: TagName;
-    }, CoterminousStyledThemeProps, Pick<Props, "label" | "className" | "onChange" | "tagName"> & {
+    }, CoterminousStyledThemeProps, Pick<TextInputProps, "label" | "className" | "onChange" | "tagName" | "isRequired"> & {
         theme?: CoterminousStyledThemeProps;
     }>;
 };

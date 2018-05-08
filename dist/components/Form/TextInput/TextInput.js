@@ -16,6 +16,7 @@ const textInput_style_1 = require("./textInput.style");
 // https://github.com/Microsoft/TypeScript/issues/9944
 const coterminous_styled_1 = require("coterminous-styled");
 const ControlWrapper_1 = require("../ControlWrapper/ControlWrapper");
+const controlWrapperHelper_1 = require("../ControlWrapper/controlWrapperHelper");
 // Enum must be exported or 'has or is using private name' error will occur
 var TagName;
 (function (TagName) {
@@ -27,7 +28,7 @@ class TextInputBase extends React.Component {
         super(props);
         this.renderControlWrapper = (element) => {
             const { label } = this.props;
-            return React.createElement(ControlWrapper_1.ControlWrapper, { label: label }, element);
+            return (React.createElement(ControlWrapper_1.ControlWrapper, Object.assign({}, controlWrapperHelper_1.extractControlWrapperProps(this.props)), element));
         };
         this.handleChange = (event) => {
             const value = event.currentTarget.value;
