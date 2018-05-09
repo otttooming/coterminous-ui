@@ -28,5 +28,6 @@ export {
 } from "./components/Form/Form";
 
 export { TextInputField } from "./components/Form/TextInput/TextInputField";
+export { CheckboxField } from "./components/Form/Checkbox/CheckboxField";
 
 export { Section } from "./components/Section/Section";

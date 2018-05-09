@@ -9,6 +9,7 @@ import {
   FormProvider,
   FormContext,
   TextInputField,
+  CheckboxField,
   theme,
   Section,
   GlobalStyle,
@@ -69,6 +70,20 @@ storiesOf("Forms", module)
               label="Label title"
               isRequired={true}
             />
+          </Section>
+        </FormProvider>
+      </>
+    </ThemeProvider>
+  ))
+  .add("CheckboxField", () => (
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <FormProvider>
+          <Section>
+            <Heading.H1>CheckboxField</Heading.H1>
+
+            <CheckboxField name="test_field" label="Label title" />
           </Section>
         </FormProvider>
       </>
