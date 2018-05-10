@@ -8,6 +8,7 @@ export interface FormState {
 
 export interface FormActions {
   setField: (field: FormFields) => void;
+  getField: (field: string) => void;
 }
 
 export interface FormFields {
@@ -22,6 +23,7 @@ const defaultValue: FormState = {
   fields: null,
   actions: {
     setField: (field: FormFields) => {},
+    getField: () => {},
   },
 };
 
@@ -32,7 +34,10 @@ export class FormProvider extends React.Component<FormProps, FormState> {
     super(props);
     this.state = {
       ...defaultValue,
-      actions: { setField: value => this.setField(value) },
+      actions: {
+        setField: value => this.setField(value),
+        getField: value => this.getField(value),
+      },
     };
   }
 
@@ -48,6 +53,12 @@ export class FormProvider extends React.Component<FormProps, FormState> {
 
   setField = (field: FormFields): void => {
     this.setState({ fields: { ...this.state.fields, ...field } });
+  };
+
+  getField = (field: string): FormField => {
+    const { fields } = this.state;
+
+    return fields[field];
   };
 }
 
