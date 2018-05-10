@@ -34,7 +34,7 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
   render() {
     const { className, children, ...restProps } = this.props;
 
-    const attributes = { ...restProps, className };
+    const attributes = { className };
 
     return this.renderControlWrapper(
       <input type="checkbox" {...attributes} onChange={this.handleChange} />,
@@ -51,10 +51,8 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
     );
   };
 
-  handleChange = (
-    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const value: boolean = !!event.currentTarget.value;
+  handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const value: boolean = Boolean(event.currentTarget.checked);
 
     this.props.onChange(value);
   };
