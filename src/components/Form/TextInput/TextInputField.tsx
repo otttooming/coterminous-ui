@@ -3,7 +3,7 @@ import {
   FormContext,
   FormState,
   withFormConsumer,
-  FormComponentProps,
+  withFormConsumerProps,
 } from "coterminous-styled";
 import { TextInput, TextInputProps, TagName } from "./TextInput";
 
@@ -15,7 +15,7 @@ interface State {}
 export type TextInputFieldProps = Props &
   Partial<FormState> &
   TextInputProps &
-  FormComponentProps;
+  withFormConsumerProps;
 
 class TextInputFieldBase extends React.Component<TextInputFieldProps, State> {
   constructor(props: TextInputFieldProps) {

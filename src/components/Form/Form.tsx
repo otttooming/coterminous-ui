@@ -19,10 +19,6 @@ export interface FormFieldState {
   value: any;
 }
 
-export interface FormComponentProps {
-  name: string;
-}
-
 const defaultValue: FormState = {
   fields: null,
   actions: {
@@ -66,7 +62,9 @@ export class FormProvider extends React.Component<FormProps, FormState> {
   };
 }
 
-export interface withFormConsumerProps {}
+export interface withFormConsumerProps {
+  name: string;
+}
 
 export function withFormConsumer<P extends withFormConsumerProps>(
   Component: React.ComponentType<P>,

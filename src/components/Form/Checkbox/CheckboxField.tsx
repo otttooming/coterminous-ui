@@ -3,7 +3,7 @@ import {
   FormContext,
   FormState,
   withFormConsumer,
-  FormComponentProps,
+  withFormConsumerProps,
 } from "coterminous-styled";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 
@@ -13,7 +13,7 @@ interface State {}
 export type CheckboxFieldProps = Props &
   Partial<FormState> &
   CheckboxProps &
-  FormComponentProps;
+  withFormConsumerProps;
 
 class CheckboxFieldBase extends React.Component<CheckboxFieldProps, State> {
   constructor(props: CheckboxFieldProps) {
