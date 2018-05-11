@@ -1,14 +1,21 @@
 import * as React from "react";
-import { FormContext, FormState, withFormConsumer } from "coterminous-styled";
+import {
+  FormContext,
+  FormState,
+  withFormConsumer,
+  FormComponentProps,
+} from "coterminous-styled";
 import { TextInput, TextInputProps, TagName } from "./TextInput";
 
 export interface Props {
-  name: string;
   tagName?: TagName;
 }
 interface State {}
 
-export type TextInputFieldProps = Props & Partial<FormState> & TextInputProps;
+export type TextInputFieldProps = Props &
+  Partial<FormState> &
+  TextInputProps &
+  FormComponentProps;
 
 class TextInputFieldBase extends React.Component<TextInputFieldProps, State> {
   constructor(props: TextInputFieldProps) {

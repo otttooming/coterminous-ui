@@ -25,6 +25,7 @@ export {
   FormContext,
   withFormConsumer,
   FormState,
+  FormComponentProps,
 } from "./components/Form/Form";
 
 export { TextInputField } from "./components/Form/TextInput/TextInputField";

@@ -12,11 +12,15 @@ export interface FormActions {
 }
 
 export interface FormFields {
-  [key: string]: FormField;
+  [key: string]: FormFieldState;
 }
 
-export interface FormField {
+export interface FormFieldState {
   value: any;
+}
+
+export interface FormComponentProps {
+  name: string;
 }
 
 const defaultValue: FormState = {
@@ -55,7 +59,7 @@ export class FormProvider extends React.Component<FormProps, FormState> {
     this.setState({ fields: { ...this.state.fields, ...field } });
   };
 
-  getField = (field: string): FormField => {
+  getField = (field: string): FormFieldState => {
     const { fields } = this.state;
 
     return fields[field];
