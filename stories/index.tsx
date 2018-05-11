@@ -83,7 +83,11 @@ storiesOf("Forms", module)
           <Section>
             <Heading.H1>CheckboxField</Heading.H1>
 
-            <CheckboxField name="test_field" label="Label title" />
+            <CheckboxField
+              name="test_field"
+              label="Label title"
+              inputLabel="Input label"
+            />
           </Section>
         </FormProvider>
       </>

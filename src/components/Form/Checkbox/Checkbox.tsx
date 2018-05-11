@@ -1,5 +1,10 @@
 import * as React from "react";
-import { CheckboxStyle } from "./checkbox.style";
+import {
+  CheckboxStyle,
+  InputWrapperStyle,
+  HiddenInput,
+  CheckboxLabelWrapper,
+} from "./checkbox.style";
 
 // TS error if some components not explicitly imported for tsconfig declaration export
 // https://github.com/styled-components/styled-components/issues/1063
@@ -8,7 +13,8 @@ import {
   styled,
   StyledComponentClass, // Required for tsconfig declaration export
   CoterminousStyledThemeProps, // Required for tsconfig declaration export
-  Styles, // Required for tsconfig declaration export
+  Styles,
+  CSSIcons, // Required for tsconfig declaration export
 } from "coterminous-styled";
 import {
   ControlWrapperInternalProps, // Required due to TS export requirements. https://github.com/Microsoft/TypeScript/issues/9944
@@ -20,24 +26,42 @@ import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelp
 export interface Props {
   onChange?: (value: boolean) => void;
   className?: string;
+  inputLabel: React.ReactNode;
 }
 
-interface State {}
+interface State {
+  isChecked: boolean;
+}
 
 export type CheckboxProps = Props & ControlWrapperProps;
 
 class CheckboxBase extends React.Component<CheckboxProps, State> {
   constructor(props: CheckboxProps) {
     super(props);
+
+    this.state = {
+      isChecked: false,
+    };
   }
 
   render() {
-    const { className, children, ...restProps } = this.props;
-
+    const { className, children, inputLabel, ...restProps } = this.props;
+    const { isChecked } = this.state;
     const attributes = { className };
 
     return this.renderControlWrapper(
-      <input type="checkbox" {...attributes} onChange={this.handleChange} />,
+      <CheckboxLabelWrapper>
+        <InputWrapperStyle>
+          {isChecked && <CSSIcons.Checkmark />}
+        </InputWrapperStyle>
+
+        <HiddenInput
+          type="checkbox"
+          {...attributes}
+          onChange={this.handleChange}
+        />
+        <span>{inputLabel}</span>
+      </CheckboxLabelWrapper>,
     );
   }
 
@@ -53,6 +77,10 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
 
   handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const value: boolean = Boolean(event.currentTarget.checked);
+
+    this.setState({
+      isChecked: value,
+    });
 
     this.props.onChange(value);
   };
