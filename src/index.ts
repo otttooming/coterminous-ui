@@ -32,3 +32,4 @@ export { TextInputField } from "./components/Form/TextInput/TextInputField";
 export { CheckboxField } from "./components/Form/Checkbox/CheckboxField";
 
 export { Section } from "./components/Section/Section";
+export { CSSIcons } from "./components/Icons/Icons";
