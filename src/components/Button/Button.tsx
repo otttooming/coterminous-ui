@@ -35,7 +35,9 @@ const StyledGlow = css`
   transition: all 0.1s ease-out;
 `;
 
-export interface Props {}
+export interface Props {
+  onClick?: () => void;
+}
 export interface State {
   x: number;
   y: number;
@@ -84,6 +86,14 @@ class ButtonBase extends React.Component<Props, State> {
     });
   }
 
+  handleClick(e: React.SyntheticEvent<HTMLButtonElement>) {
+    const { onClick } = this.props;
+
+    if (onClick) {
+      onClick();
+    }
+  }
+
   render() {
     const { children, ...other } = this.props;
     return (
@@ -92,6 +102,7 @@ class ButtonBase extends React.Component<Props, State> {
         onMouseMove={e => this.onMouseMove(e)}
         onMouseEnter={e => this.onMouseEnter(e)}
         onMouseLeave={e => this.onMouseLeave(e)}
+        onClick={this.handleClick}
         {...other}
       >
         {children}
