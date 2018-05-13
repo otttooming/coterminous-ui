@@ -17,6 +17,7 @@ export interface ColorProps {
   red: string;
   warm: string;
   white: string;
+  green: string;
 }
 
 export const color: ColorProps = {
@@ -24,6 +25,7 @@ export const color: ColorProps = {
   red: "#a30000",
   warm: "#ffc000",
   white: "#fff",
+  green: "#31e184",
 };
 
 export interface BackgroundProps {
