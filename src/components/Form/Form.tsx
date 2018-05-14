@@ -9,6 +9,7 @@ export interface FormState {
 export interface FormActions {
   setField: (field: FormFields) => void;
   getField: (field: string) => void;
+  submit: () => void;
 }
 
 export interface FormFields {
@@ -24,6 +25,7 @@ const defaultValue: FormState = {
   actions: {
     setField: (field: FormFields) => {},
     getField: () => {},
+    submit: () => {},
   },
 };
 
@@ -37,6 +39,7 @@ export class FormProvider extends React.Component<FormProps, FormState> {
       actions: {
         setField: value => this.setField(value),
         getField: value => this.getField(value),
+        submit: () => this.submit(),
       },
     };
   }
@@ -59,6 +62,12 @@ export class FormProvider extends React.Component<FormProps, FormState> {
     const { fields } = this.state;
 
     return fields[field];
+  };
+
+  submit = () => {
+    const { fields } = this.state;
+
+    console.log(fields);
   };
 }
 
