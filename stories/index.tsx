@@ -72,6 +72,14 @@ storiesOf("Forms", module)
               isRequired={true}
             />
           </Section>
+
+          <Section>
+            <Heading.H1>Submit form</Heading.H1>
+
+            <FormContext.Consumer>
+              {props => <Button onClick={props.actions.submit}>Submit</Button>}
+            </FormContext.Consumer>
+          </Section>
         </FormProvider>
       </>
     </ThemeProvider>
