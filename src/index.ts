@@ -29,8 +29,10 @@ export {
   withFormConsumerProps,
 } from "./components/Form/Form";
 
-export { TextInputField } from "./components/Form/TextInput/TextInputField";
-export { CheckboxField } from "./components/Form/Checkbox/CheckboxField";
+export { TextInputField } from "./components/TextInput/TextInputField";
+export { CheckboxField } from "./components/Checkbox/CheckboxField";
 
 export { Section } from "./components/Section/Section";
 export { CSSIcons } from "./components/Icons/Icons";
+
+export { Select } from "./components/Select/Select";

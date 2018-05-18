@@ -1,4 +1,4 @@
-import { visuallyHidden } from "./../../../common/styles/atoms/display.style";
+import { visuallyHidden } from "./../../common/styles/atoms/display.style";
 import * as React from "react";
 
 // TS error if some components not explicitly imported for tsconfig declaration export
