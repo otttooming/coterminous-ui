@@ -25,7 +25,7 @@ export interface SelectItemProps {
 }
 export interface Props {
   items: SelectItemProps[];
-  onClick?: () => void;
+  onChange?: (value: SelectItemProps) => void;
 }
 
 export interface State {
@@ -35,9 +35,7 @@ export interface State {
 export type SelectProps = Props & ControlWrapperProps;
 
 export class SelectBase extends React.Component<SelectProps, State> {
-  state: State = {
-    selected: null,
-  };
+  state: State = { selected: null };
 
   render() {
     const { items, className } = this.props;
@@ -99,10 +97,14 @@ export class SelectBase extends React.Component<SelectProps, State> {
     );
   };
 
-  handleChange = (selected: any) => {
-    this.setState({
-      selected,
-    });
+  handleChange = (selected: SelectItemProps) => {
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(selected);
+    }
+
+    this.setState({ selected });
   };
 }
 

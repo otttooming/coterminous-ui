@@ -36,3 +36,4 @@ export { Section } from "./components/Section/Section";
 export { CSSIcons } from "./components/Icons/Icons";
 
 export { Select } from "./components/Select/Select";
+export { SelectField } from "./components/Select/SelectField";

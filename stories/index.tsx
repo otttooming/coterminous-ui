@@ -15,6 +15,7 @@ import {
   GlobalStyle,
   Button,
   Select,
+  SelectField,
 } from "coterminous-styled";
 
 const { Welcome } = require("@storybook/react/demo");
@@ -147,5 +148,18 @@ storiesOf("Forms", module)
           </Section>
         </FormProvider>
       </>
+    </ThemeProvider>
+  ))
+  .add("SelectField", () => (
+    <ThemeProvider theme={theme}>
+      <FormProvider>
+        <Section>
+          <SelectField
+            name="select"
+            label="Enter address"
+            items={selectItems}
+          />
+        </Section>
+      </FormProvider>
     </ThemeProvider>
   ));
