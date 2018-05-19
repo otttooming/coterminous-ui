@@ -17,6 +17,7 @@ import {
 } from "../ControlWrapper/ControlWrapper";
 import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
 import Downshift from "downshift";
+import { selectInputStyle } from "./select.style";
 
 export interface SelectItemProps {
   label: string;
@@ -33,13 +34,13 @@ export interface State {
 
 export type SelectProps = Props & ControlWrapperProps;
 
-export class Select extends React.Component<SelectProps, State> {
+export class SelectBase extends React.Component<SelectProps, State> {
   state: State = {
     selected: null,
   };
 
   render() {
-    const { items } = this.props;
+    const { items, className } = this.props;
     const label =
       this.state.selected && this.state.selected.label
         ? this.state.selected.label
@@ -59,7 +60,7 @@ export class Select extends React.Component<SelectProps, State> {
           selectedItem,
         }) => (
           <div>
-            <input {...getInputProps()} />
+            <input className={className} {...getInputProps()} />
             {isOpen ? (
               <div style={{ color: "black" }}>
                 {items
@@ -104,3 +105,7 @@ export class Select extends React.Component<SelectProps, State> {
     });
   };
 }
+
+export const Select = styled(SelectBase)`
+  ${selectInputStyle};
+`;
