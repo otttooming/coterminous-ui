@@ -14,9 +14,14 @@ import {
   Section,
   GlobalStyle,
   Button,
+  Select,
 } from "coterminous-styled";
 
 const { Welcome } = require("@storybook/react/demo");
+
+const selectItems = [
+  { label: "Apple tree", value: { pickup: "Pickup value" } },
+];
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
@@ -39,6 +44,15 @@ storiesOf("Base", module)
     <ThemeProvider theme={theme}>
       <>
         <Button>Button</Button>
+      </>
+    </ThemeProvider>
+  ))
+  .add("Select", () => (
+    <ThemeProvider theme={theme}>
+      <>
+        <Section>
+          <Select label="Enter address" items={selectItems} />
+        </Section>
       </>
     </ThemeProvider>
   ));
