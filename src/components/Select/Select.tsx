@@ -10,6 +10,7 @@ import {
   CoterminousStyledThemeProps, // Required for tsconfig declaration export
   Styles, // Required for tsconfig declaration export
   css,
+  Popover,
 } from "coterminous-styled";
 import {
   ControlWrapperInternalProps, // Required due to TS export requirements. https://github.com/Microsoft/TypeScript/issues/9944
@@ -46,61 +47,54 @@ export class SelectBase extends React.Component<SelectProps, State> {
         : undefined;
 
     return this.renderControlWrapper(
-      <Manager>
-        <Downshift
-          onChange={this.handleChange}
-          itemToString={item => (!!item ? item.label : "")}
-          render={({
-            getInputProps,
-            getItemProps,
-            getLabelProps,
-            isOpen,
-            inputValue,
-            highlightedIndex,
-            selectedItem,
-          }) => (
-            <div>
-              <Reference>
-                {({ ref }) => (
-                  <input ref={ref} className={className} {...getInputProps()} />
-                )}
-              </Reference>
-
-              {isOpen && (
-                <Popper placement="bottom">
-                  {({ ref, style, placement, arrowProps }) => (
-                    <div ref={ref} style={style} data-placement={placement}>
-                      {items
-                        .filter(
-                          i => !inputValue || i.label.includes(inputValue),
-                        )
-                        .map((item, index) => (
-                          <div
-                            {...getItemProps({
-                              key: index,
-                              index,
-                              item,
-                              style: {
-                                backgroundColor:
-                                  highlightedIndex === index
-                                    ? "lightgray"
-                                    : "white",
-                                fontWeight:
-                                  selectedItem === item ? "bold" : "normal",
-                              },
-                            })}
-                          >
-                            {!!item && item.label}
-                          </div>
-                        ))}
-                    </div>
-                  )}
-                </Popper>
+      <Downshift
+        onChange={this.handleChange}
+        itemToString={item => (!!item ? item.label : "")}
+        render={({
+          getInputProps,
+          getItemProps,
+          getLabelProps,
+          isOpen,
+          inputValue,
+          highlightedIndex,
+          selectedItem,
+        }) => (
+          <div>
+            <Popover
+              isOpen={isOpen}
+              popoverChildren={() => (
+                <div>
+                  {items
+                    .filter(i => !inputValue || i.label.includes(inputValue))
+                    .map((item, index) => (
+                      <div
+                        {...getItemProps({
+                          key: index,
+                          index,
+                          item,
+                          style: {
+                            backgroundColor:
+                              highlightedIndex === index
+                                ? "lightgray"
+                                : "white",
+                            fontWeight:
+                              selectedItem === item ? "bold" : "normal",
+                          },
+                        })}
+                      >
+                        {!!item && item.label}
+                      </div>
+                    ))}
+                </div>
               )}
-            </div>
-          )}
-        />
-      </Manager>,
+            >
+              {({ ref }) => (
+                <input ref={ref} className={className} {...getInputProps()} />
+              )}
+            </Popover>
+          </div>
+        )}
+      />,
     );
   }
 
@@ -113,6 +107,8 @@ export class SelectBase extends React.Component<SelectProps, State> {
       </ControlWrapper>
     );
   };
+
+  renderDropdown = () => {};
 
   handleChange = (selected: SelectItemProps) => {
     const { onChange } = this.props;
