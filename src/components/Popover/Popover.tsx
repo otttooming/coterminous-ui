@@ -17,9 +17,9 @@ import {
 } from "../ControlWrapper/ControlWrapper";
 import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
 
-type RefHandler = (ref: HTMLElement | null) => void;
+export type RefHandler = (ref: HTMLElement | null) => void;
 
-interface ReferenceChildrenProps {
+export interface ReferenceChildrenProps {
   ref: RefHandler;
 }
 
@@ -29,7 +29,7 @@ export interface Props {
   isOpen: boolean;
 }
 
-interface State {}
+export interface State {}
 
 export type PopoverProps = Props;
 
