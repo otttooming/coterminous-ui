@@ -16,6 +16,7 @@ import {
   ControlWrapperProps,
 } from "../ControlWrapper/ControlWrapper";
 import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
+import { Dropdown, arrowStyle } from "./popover.style";
 
 export type RefHandler = (ref: HTMLElement | null) => void;
 
@@ -51,7 +52,14 @@ export class PopoverBase extends React.Component<PopoverProps, State> {
           <Popper placement="bottom">
             {({ ref, style, placement, arrowProps }) => (
               <aside ref={ref} style={style} data-placement={placement}>
-                {this.props.popoverChildren()}
+                <Arrow
+                  passedRef={arrowProps.ref}
+                  style={arrowProps.style}
+                  placement={placement}
+                />
+                <Dropdown data-placement={placement}>
+                  {this.props.popoverChildren()}
+                </Dropdown>
               </aside>
             )}
           </Popper>
@@ -62,3 +70,27 @@ export class PopoverBase extends React.Component<PopoverProps, State> {
 }
 
 export const Popover = PopoverBase;
+
+interface ArrowProps {
+  passedRef: (ref: HTMLElement | null) => void;
+  style: React.CSSProperties;
+  className?: string;
+  placement: string;
+}
+
+class ArrowBase extends React.Component<ArrowProps, any> {
+  render() {
+    return (
+      <div
+        ref={this.props.passedRef}
+        style={this.props.style}
+        className={this.props.className}
+        data-placement={this.props.placement}
+      />
+    );
+  }
+}
+
+const Arrow = styled(ArrowBase)`
+  ${arrowStyle};
+`;
