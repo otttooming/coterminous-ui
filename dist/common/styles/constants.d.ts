@@ -3,6 +3,7 @@ export interface ColorProps {
     red: string;
     warm: string;
     white: string;
+    green: string;
 }
 export declare const color: ColorProps;
 export interface BackgroundProps {

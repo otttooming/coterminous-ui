@@ -15,6 +15,7 @@ exports.color = {
     red: "#a30000",
     warm: "#ffc000",
     white: "#fff",
+    green: "#31e184",
 };
 exports.background = {
     main: "rgba(186, 0, 251, .15)",

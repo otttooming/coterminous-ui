@@ -8,11 +8,13 @@ export interface FormState {
 }
 export interface FormActions {
     setField: (field: FormFields) => void;
+    getField: (field: string) => void;
+    submit: () => void;
 }
 export interface FormFields {
-    [key: string]: FormField;
+    [key: string]: FormFieldState;
 }
-export interface FormField {
+export interface FormFieldState {
     value: any;
 }
 export declare const FormContext: React.Context<FormState>;
@@ -20,8 +22,11 @@ export declare class FormProvider extends React.Component<FormProps, FormState> 
     constructor(props: FormProps);
     render(): JSX.Element;
     setField: (field: FormFields) => void;
+    getField: (field: string) => FormFieldState;
+    submit: () => FormFields;
 }
 export interface withFormConsumerProps {
+    name: string;
 }
 export declare function withFormConsumer<P extends withFormConsumerProps>(Component: React.ComponentType<P>): {
     new (props: P, context?: any): {

@@ -5,6 +5,8 @@ const defaultValue = {
     fields: null,
     actions: {
         setField: (field) => { },
+        getField: () => { },
+        submit: () => { },
     },
 };
 exports.FormContext = React.createContext(defaultValue);
@@ -14,7 +16,20 @@ class FormProvider extends React.Component {
         this.setField = (field) => {
             this.setState({ fields: Object.assign({}, this.state.fields, field) });
         };
-        this.state = Object.assign({}, defaultValue, { actions: { setField: value => this.setField(value) } });
+        this.getField = (field) => {
+            const { fields } = this.state;
+            return fields[field];
+        };
+        this.submit = () => {
+            const { fields } = this.state;
+            console.log(fields);
+            return fields;
+        };
+        this.state = Object.assign({}, defaultValue, { actions: {
+                setField: value => this.setField(value),
+                getField: value => this.getField(value),
+                submit: () => this.submit(),
+            } });
     }
     render() {
         return (React.createElement(exports.FormContext.Provider, { value: this.state },
