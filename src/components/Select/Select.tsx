@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Manager, Reference, Popper } from "react-popper";
 
 // TS error if some components not explicitly imported for tsconfig declaration export
 // https://github.com/styled-components/styled-components/issues/1063
@@ -45,45 +46,61 @@ export class SelectBase extends React.Component<SelectProps, State> {
         : undefined;
 
     return this.renderControlWrapper(
-      <Downshift
-        onChange={this.handleChange}
-        itemToString={item => (!!item ? item.label : "")}
-        render={({
-          getInputProps,
-          getItemProps,
-          getLabelProps,
-          isOpen,
-          inputValue,
-          highlightedIndex,
-          selectedItem,
-        }) => (
-          <div>
-            <input className={className} {...getInputProps()} />
-            {isOpen ? (
-              <div style={{ color: "black" }}>
-                {items
-                  .filter(i => !inputValue || i.label.includes(inputValue))
-                  .map((item, index) => (
-                    <div
-                      {...getItemProps({
-                        key: index,
-                        index,
-                        item,
-                        style: {
-                          backgroundColor:
-                            highlightedIndex === index ? "lightgray" : "white",
-                          fontWeight: selectedItem === item ? "bold" : "normal",
-                        },
-                      })}
-                    >
-                      {!!item && item.label}
+      <Manager>
+        <Downshift
+          onChange={this.handleChange}
+          itemToString={item => (!!item ? item.label : "")}
+          render={({
+            getInputProps,
+            getItemProps,
+            getLabelProps,
+            isOpen,
+            inputValue,
+            highlightedIndex,
+            selectedItem,
+          }) => (
+            <div>
+              <Reference>
+                {({ ref }) => (
+                  <input ref={ref} className={className} {...getInputProps()} />
+                )}
+              </Reference>
+
+              {isOpen && (
+                <Popper placement="bottom">
+                  {({ ref, style, placement, arrowProps }) => (
+                    <div ref={ref} style={style} data-placement={placement}>
+                      {items
+                        .filter(
+                          i => !inputValue || i.label.includes(inputValue),
+                        )
+                        .map((item, index) => (
+                          <div
+                            {...getItemProps({
+                              key: index,
+                              index,
+                              item,
+                              style: {
+                                backgroundColor:
+                                  highlightedIndex === index
+                                    ? "lightgray"
+                                    : "white",
+                                fontWeight:
+                                  selectedItem === item ? "bold" : "normal",
+                              },
+                            })}
+                          >
+                            {!!item && item.label}
+                          </div>
+                        ))}
                     </div>
-                  ))}
-              </div>
-            ) : null}
-          </div>
-        )}
-      />,
+                  )}
+                </Popper>
+              )}
+            </div>
+          )}
+        />
+      </Manager>,
     );
   }
 
