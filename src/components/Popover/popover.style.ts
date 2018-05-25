@@ -1,3 +1,4 @@
+import * as React from "react";
 import { border } from "./../../common/styles/constants";
 // TS error if some components not explicitly imported for tsconfig declaration export
 // https://github.com/styled-components/styled-components/issues/1063
