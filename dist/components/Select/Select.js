@@ -17,7 +17,15 @@ class SelectBase extends React.Component {
             const { label } = this.props;
             return (React.createElement(ControlWrapper_1.ControlWrapper, Object.assign({}, controlWrapperHelper_1.extractControlWrapperProps(this.props)), element));
         };
-        this.renderDropdown = () => { };
+        this.renderDropdownItem = (item) => {
+            if (!item) {
+                return null;
+            }
+            if (item.renderContent) {
+                return item.renderContent;
+            }
+            return item.label;
+        };
         this.handleChange = (selected) => {
             const { onChange } = this.props;
             if (onChange) {
@@ -44,7 +52,7 @@ class SelectBase extends React.Component {
                                 : "white",
                             fontWeight: selectedItem === item ? "bold" : "normal",
                         },
-                    })), !!item && item.label))))) }, ({ ref }) => (React.createElement("input", Object.assign({ ref: ref, className: className }, getInputProps())))))) }));
+                    })), this.renderDropdownItem(item)))))) }, ({ ref }) => (React.createElement("input", Object.assign({ ref: ref, className: className }, getInputProps())))))) }));
     }
 }
 exports.SelectBase = SelectBase;

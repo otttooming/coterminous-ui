@@ -9,6 +9,6 @@ export { TextInputField } from "./components/TextInput/TextInputField";
 export { CheckboxField } from "./components/Checkbox/CheckboxField";
 export { Section } from "./components/Section/Section";
 export { CSSIcons } from "./components/Icons/Icons";
-export { Select } from "./components/Select/Select";
+export { Select, SelectItemProps } from "./components/Select/Select";
 export { SelectField } from "./components/Select/SelectField";
 export { Popover } from "./components/Popover/Popover";

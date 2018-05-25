@@ -4,6 +4,7 @@ import { StyledComponentClass, CoterminousStyledThemeProps } from "coterminous-s
 import { ControlWrapperProps } from "../ControlWrapper/ControlWrapper";
 export interface SelectItemProps {
     label: string;
+    renderContent?: JSX.Element;
     value: any;
 }
 export interface Props {
@@ -18,7 +19,7 @@ export declare class SelectBase extends React.Component<SelectProps, State> {
     state: State;
     render(): JSX.Element;
     renderControlWrapper: (element: React.ReactNode) => JSX.Element;
-    renderDropdown: () => void;
+    renderDropdownItem: (item: SelectItemProps) => string | JSX.Element;
     handleChange: (selected: SelectItemProps) => void;
 }
 export declare const Select: StyledComponentClass<SelectProps, CoterminousStyledThemeProps, Pick<SelectProps, "label" | "className" | "onChange" | "isRequired" | "items"> & {
