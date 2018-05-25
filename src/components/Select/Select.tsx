@@ -23,6 +23,7 @@ import { selectInputStyle } from "./select.style";
 
 export interface SelectItemProps {
   label: string;
+  renderContent?: JSX.Element;
   value: any;
 }
 export interface Props {
@@ -82,7 +83,7 @@ export class SelectBase extends React.Component<SelectProps, State> {
                           },
                         })}
                       >
-                        {!!item && item.label}
+                        {this.renderDropdownItem(item)}
                       </div>
                     ))}
                 </div>
@@ -108,7 +109,17 @@ export class SelectBase extends React.Component<SelectProps, State> {
     );
   };
 
-  renderDropdown = () => {};
+  renderDropdownItem = (item: SelectItemProps) => {
+    if (!item) {
+      return null;
+    }
+
+    if (item.renderContent) {
+      return item.renderContent;
+    }
+
+    return item.label;
+  };
 
   handleChange = (selected: SelectItemProps) => {
     const { onChange } = this.props;

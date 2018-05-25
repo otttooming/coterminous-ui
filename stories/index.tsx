@@ -16,12 +16,19 @@ import {
   Button,
   Select,
   SelectField,
+  SelectItemProps,
 } from "coterminous-styled";
+import { spawn } from "child_process";
 
 const { Welcome } = require("@storybook/react/demo");
 
-const selectItems = [
+const selectItems: SelectItemProps[] = [
   { label: "Apple tree", value: { pickup: "Pickup value" } },
+  {
+    label: "Lemon tree",
+    value: { pickup: "Pickup value" },
+    renderContent: <div style={{ color: "red" }}>Lemon red</div>,
+  },
 ];
 
 storiesOf("Welcome", module).add("to Storybook", () => (
