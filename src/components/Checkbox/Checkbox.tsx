@@ -76,13 +76,17 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
   };
 
   handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const { onChange } = this.props;
+
     const value: boolean = Boolean(event.currentTarget.checked);
 
     this.setState({
       isChecked: value,
     });
 
-    this.props.onChange(value);
+    if (onChange) {
+      onChange(value);
+    }
   };
 }
 

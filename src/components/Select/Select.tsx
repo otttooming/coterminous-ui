@@ -38,7 +38,7 @@ export interface State {
 export type SelectProps = Props & ControlWrapperProps;
 
 export class SelectBase extends React.Component<SelectProps, State> {
-  state: State = { selected: null };
+  state: State = { selected: undefined };
 
   render() {
     const { items, className } = this.props;

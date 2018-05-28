@@ -54,6 +54,10 @@ class ButtonBase extends React.Component<Props, State> {
   };
 
   onMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!this.buttonElement.current) {
+      return;
+    }
+
     const x = e.nativeEvent.offsetX - this.buttonElement.current.clientLeft;
     const y = e.nativeEvent.offsetY - this.buttonElement.current.clientTop;
     this.setState(state => {

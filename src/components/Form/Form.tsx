@@ -21,7 +21,7 @@ export interface FormFieldState {
 }
 
 const defaultValue: FormState = {
-  fields: null,
+  fields: {},
   actions: {
     setField: (field: FormFields) => {},
     getField: () => {},
@@ -72,7 +72,7 @@ export class FormProvider extends React.Component<FormProps, FormState> {
   };
 }
 
-export interface withFormConsumerProps {
+export interface withFormConsumerProps extends FormState {
   name: string;
 }
 
