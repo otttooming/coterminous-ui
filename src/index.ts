@@ -21,13 +21,12 @@ export { rotate360 } from "./common/styles/keyframes";
 export { Heading } from "./components/Heading/Heading";
 export { Button } from "./components/Button/Button";
 
+export { FormProvider, FormContext, FormState } from "./components/Form/Form";
+
 export {
-  FormProvider,
-  FormContext,
   withFormConsumer,
-  FormState,
-  withFormConsumerProps,
-} from "./components/Form/Form";
+  ExternalWithFormConsumerProps,
+} from "./components/Form/withFormConsumer";
 
 export { TextInputField } from "./components/TextInput/TextInputField";
 export { CheckboxField } from "./components/Checkbox/CheckboxField";

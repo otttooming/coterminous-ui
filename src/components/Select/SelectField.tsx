@@ -3,7 +3,7 @@ import {
   FormContext,
   FormState,
   withFormConsumer,
-  withFormConsumerProps,
+  ExternalWithFormConsumerProps,
 } from "coterminous-styled";
 import { Select, SelectProps } from "./Select";
 
@@ -11,9 +11,8 @@ export interface Props {}
 interface State {}
 
 export type SelectFieldProps = Props &
-  Partial<FormState> &
   SelectProps &
-  withFormConsumerProps;
+  ExternalWithFormConsumerProps;
 
 class SelectFieldBase extends React.Component<SelectFieldProps, State> {
   constructor(props: SelectFieldProps) {
@@ -21,23 +20,15 @@ class SelectFieldBase extends React.Component<SelectFieldProps, State> {
   }
 
   render() {
-    const { name, actions, ...rest } = this.props;
-    const { setField } = actions;
+    const { name, ...rest } = this.props;
 
-    return (
-      <Select
-        {...rest}
-        onChange={value =>
-          setField({
-            [name]: { value },
-          })
-        }
-      />
-    );
+    return <Select {...rest} />;
   }
 }
 
-const SelectFieldWithFormConsumer = withFormConsumer(SelectFieldBase);
+const SelectFieldWithFormConsumer = withFormConsumer<SelectFieldProps>(
+  SelectFieldBase,
+);
 
 export const SelectField = (props: SelectFieldProps) => (
   <SelectFieldWithFormConsumer {...props} />

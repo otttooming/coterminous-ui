@@ -3,7 +3,7 @@ import {
   FormContext,
   FormState,
   withFormConsumer,
-  withFormConsumerProps,
+  ExternalWithFormConsumerProps,
 } from "coterminous-styled";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 
@@ -11,9 +11,8 @@ export interface Props {}
 interface State {}
 
 export type CheckboxFieldProps = Props &
-  Partial<FormState> &
   CheckboxProps &
-  withFormConsumerProps;
+  ExternalWithFormConsumerProps;
 
 class CheckboxFieldBase extends React.Component<CheckboxFieldProps, State> {
   constructor(props: CheckboxFieldProps) {
@@ -21,23 +20,15 @@ class CheckboxFieldBase extends React.Component<CheckboxFieldProps, State> {
   }
 
   render() {
-    const { name, actions, ...rest } = this.props;
-    const { setField } = actions;
+    const { name, ...rest } = this.props;
 
-    return (
-      <Checkbox
-        {...rest}
-        onChange={value =>
-          setField({
-            [name]: { value },
-          })
-        }
-      />
-    );
+    return <Checkbox {...rest} />;
   }
 }
 
-const CheckboxFieldWithFormConsumer = withFormConsumer(CheckboxFieldBase);
+const CheckboxFieldWithFormConsumer = withFormConsumer<
+  ExternalWithFormConsumerProps
+>(CheckboxFieldBase);
 
 export const CheckboxField = (props: CheckboxFieldProps) => (
   <CheckboxFieldWithFormConsumer {...props} />

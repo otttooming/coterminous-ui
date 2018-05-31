@@ -20,7 +20,7 @@ import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelp
 // Enum must be exported or 'has or is using private name' error will occur
 export enum TagName {
   Input = "input",
-  TextArea = "h1",
+  TextArea = "textarea",
 }
 
 export interface Props {
