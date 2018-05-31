@@ -89,13 +89,13 @@ class ButtonBase extends React.Component<Props, State> {
     });
   }
 
-  handleClick(e: React.SyntheticEvent<HTMLButtonElement>) {
+  handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     const { onClick } = this.props;
 
     if (onClick) {
       onClick();
     }
-  }
+  };
 
   render() {
     const { children, ...other } = this.props;
