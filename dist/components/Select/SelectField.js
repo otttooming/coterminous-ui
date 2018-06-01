@@ -17,11 +17,8 @@ class SelectFieldBase extends React.Component {
         super(props);
     }
     render() {
-        const _a = this.props, { name, actions } = _a, rest = __rest(_a, ["name", "actions"]);
-        const { setField } = actions;
-        return (React.createElement(Select_1.Select, Object.assign({}, rest, { onChange: value => setField({
-                [name]: { value },
-            }) })));
+        const _a = this.props, { name } = _a, rest = __rest(_a, ["name"]);
+        return React.createElement(Select_1.Select, Object.assign({}, rest));
     }
 }
 const SelectFieldWithFormConsumer = coterminous_styled_1.withFormConsumer(SelectFieldBase);

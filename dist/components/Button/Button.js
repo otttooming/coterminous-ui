@@ -46,12 +46,21 @@ class ButtonBase extends React.Component {
             size: 0,
         };
         this.onMouseMove = (e) => {
+            if (!this.buttonElement.current) {
+                return;
+            }
             const x = e.nativeEvent.offsetX - this.buttonElement.current.clientLeft;
             const y = e.nativeEvent.offsetY - this.buttonElement.current.clientTop;
             this.setState(state => {
                 return Object.assign({}, state, { x,
                     y });
             });
+        };
+        this.handleClick = (e) => {
+            const { onClick } = this.props;
+            if (onClick) {
+                onClick();
+            }
         };
     }
     onMouseEnter(e) {
@@ -65,12 +74,6 @@ class ButtonBase extends React.Component {
         this.setState(state => {
             return Object.assign({}, state, { size: 0 });
         });
-    }
-    handleClick(e) {
-        const { onClick } = this.props;
-        if (onClick) {
-            onClick();
-        }
     }
     render() {
         const _a = this.props, { children } = _a, other = __rest(_a, ["children"]);

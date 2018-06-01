@@ -25,7 +25,7 @@ export declare class FormProvider extends React.Component<FormProps, FormState> 
     getField: (field: string) => FormFieldState;
     submit: () => FormFields;
 }
-export interface withFormConsumerProps {
+export interface withFormConsumerProps extends FormState {
     name: string;
 }
 export declare function withFormConsumer<P extends withFormConsumerProps>(Component: React.ComponentType<P>): {

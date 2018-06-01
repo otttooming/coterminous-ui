@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const defaultValue = {
-    fields: null,
+    fields: {},
     actions: {
         setField: (field) => { },
         getField: () => { },

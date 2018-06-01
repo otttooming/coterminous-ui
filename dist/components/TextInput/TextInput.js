@@ -21,7 +21,7 @@ const controlWrapperHelper_1 = require("../ControlWrapper/controlWrapperHelper")
 var TagName;
 (function (TagName) {
     TagName["Input"] = "input";
-    TagName["TextArea"] = "h1";
+    TagName["TextArea"] = "textarea";
 })(TagName = exports.TagName || (exports.TagName = {}));
 class TextInputBase extends React.Component {
     constructor(props) {
@@ -31,8 +31,11 @@ class TextInputBase extends React.Component {
             return (React.createElement(ControlWrapper_1.ControlWrapper, Object.assign({}, controlWrapperHelper_1.extractControlWrapperProps(this.props)), element));
         };
         this.handleChange = (event) => {
+            const { onChange } = this.props;
             const value = event.currentTarget.value;
-            this.props.onChange(value);
+            if (onChange) {
+                onChange(value);
+            }
         };
     }
     render() {

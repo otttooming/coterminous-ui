@@ -17,17 +17,12 @@ class TextInputFieldBase extends React.Component {
         super(props);
     }
     render() {
-        const _a = this.props, { name, tagName, actions } = _a, rest = __rest(_a, ["name", "tagName", "actions"]);
-        const { setField } = actions;
+        const _a = this.props, { name, tagName } = _a, rest = __rest(_a, ["name", "tagName"]);
         switch (tagName) {
             case TextInput_1.TagName.Input:
-                return (React.createElement(TextInput_1.TextInput.Input, Object.assign({}, rest, { onChange: value => setField({
-                        [name]: { value },
-                    }) })));
+                return React.createElement(TextInput_1.TextInput.Input, Object.assign({}, rest));
             case TextInput_1.TagName.TextArea:
-                return (React.createElement(TextInput_1.TextInput.TextArea, Object.assign({}, rest, { onChange: value => setField({
-                        [name]: { value },
-                    }) })));
+                return React.createElement(TextInput_1.TextInput.TextArea, Object.assign({}, rest));
             default:
                 return null;
         }

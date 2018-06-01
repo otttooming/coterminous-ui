@@ -12,7 +12,7 @@ const select_style_1 = require("./select.style");
 class SelectBase extends React.Component {
     constructor() {
         super(...arguments);
-        this.state = { selected: null };
+        this.state = { selected: undefined };
         this.renderControlWrapper = (element) => {
             const { label } = this.props;
             return (React.createElement(ControlWrapper_1.ControlWrapper, Object.assign({}, controlWrapperHelper_1.extractControlWrapperProps(this.props)), element));

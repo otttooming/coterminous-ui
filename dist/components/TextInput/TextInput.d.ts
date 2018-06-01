@@ -2,7 +2,7 @@ import { StyledComponentClass, CoterminousStyledThemeProps } from "coterminous-s
 import { ControlWrapperInternalProps, ControlWrapperProps } from "../ControlWrapper/ControlWrapper";
 export declare enum TagName {
     Input = "input",
-    TextArea = "h1",
+    TextArea = "textarea",
 }
 export interface Props {
     onChange?: (value: string) => void;

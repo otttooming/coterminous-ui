@@ -1,10 +1,9 @@
 /// <reference types="react" />
-import { FormState, withFormConsumerProps } from "coterminous-styled";
-import { TextInputProps, TagName } from "./TextInput";
+import { ExternalWithFormConsumerProps } from "coterminous-styled";
+import { TextInputProps } from "./TextInput";
 export interface Props {
-    tagName?: TagName;
 }
-export declare type TextInputFieldProps = Props & Partial<FormState> & TextInputProps & withFormConsumerProps;
+export declare type TextInputFieldProps = Props & TextInputProps & ExternalWithFormConsumerProps;
 export declare const TextInputField: {
     Input: (props: TextInputFieldProps) => JSX.Element;
     TextArea: (props: TextInputFieldProps) => JSX.Element;

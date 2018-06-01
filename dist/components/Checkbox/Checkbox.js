@@ -25,11 +25,14 @@ class CheckboxBase extends React.Component {
             return (React.createElement(ControlWrapper_1.ControlWrapper, Object.assign({}, controlWrapperHelper_1.extractControlWrapperProps(this.props)), element));
         };
         this.handleChange = (event) => {
+            const { onChange } = this.props;
             const value = Boolean(event.currentTarget.checked);
             this.setState({
                 isChecked: value,
             });
-            this.props.onChange(value);
+            if (onChange) {
+                onChange(value);
+            }
         };
         this.state = {
             isChecked: false,
