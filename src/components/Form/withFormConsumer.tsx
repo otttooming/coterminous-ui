@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FormContext, FormState } from "./Form";
+import { Subtract } from "utility-types";
 
 export interface ExternalWithFormConsumerProps {
   name: string;
@@ -8,9 +9,6 @@ export interface ExternalWithFormConsumerProps {
 export interface ComponentProps {
   onChange?: (value: any) => void;
 }
-
-type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
-type Subtract<T, K> = Omit<T, keyof K>;
 
 export function withFormConsumer<P extends ExternalWithFormConsumerProps>(
   Component: React.ComponentType<
