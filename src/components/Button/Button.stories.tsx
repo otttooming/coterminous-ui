@@ -1,10 +1,9 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { ThemeProvider, theme, Button } from "coterminous-styled";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
+import { text, boolean, number } from "@storybook/addon-knobs";
 
 const stories = storiesOf("Button", module);
-stories.addDecorator(withKnobs);
 stories.add("Button", () => {
   const groupId = "GROUP-ID1";
   const name = text("Name", "Arunoda Susiripala", groupId);
