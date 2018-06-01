@@ -1,13 +1,21 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { ThemeProvider, theme, Button } from "coterminous-styled";
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
-storiesOf("Button", module)
-  .addDecorator(story => <div style={{ textAlign: "center" }}>{story()}</div>)
-  .add("Button", () => (
+const stories = storiesOf("Button", module);
+stories.addDecorator(withKnobs);
+stories.add("Button", () => {
+  const groupId = "GROUP-ID1";
+  const name = text("Name", "Arunoda Susiripala", groupId);
+
+  const content = `My name is ${name}.`;
+
+  return (
     <ThemeProvider theme={theme}>
       <>
-        <Button>Button</Button>
+        <Button>{content}</Button>
       </>
     </ThemeProvider>
-  ));
+  );
+});
