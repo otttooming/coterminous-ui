@@ -17,7 +17,7 @@ export interface FormFields {
 }
 
 export interface FormFieldState {
-  value: any;
+  state: any;
 }
 
 const defaultValue: FormState = {

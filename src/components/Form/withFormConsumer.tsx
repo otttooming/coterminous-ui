@@ -26,7 +26,9 @@ export function withFormConsumer<P extends ExternalWithFormConsumerProps>(
               {...consumerProps}
               {...props}
               onChange={value =>
-                consumerProps.actions.setField({ [props.name]: value })
+                consumerProps.actions.setField({
+                  [props.name]: { state: value },
+                })
               }
             />
           )}
