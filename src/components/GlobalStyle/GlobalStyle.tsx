@@ -12,9 +12,11 @@ import {
 } from "coterminous-styled";
 import { globalStyleCss } from "./globalStyle.style";
 
+/* tslint:disable */
 injectGlobal`
   ${globalStyleCss}
 `;
+/* tslint:enable */
 
 export interface Props {}
 

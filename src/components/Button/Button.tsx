@@ -45,13 +45,13 @@ export interface State {
 }
 
 class ButtonBase extends React.Component<Props, State> {
-  private buttonElement = React.createRef<HTMLButtonElement>();
-
   state = {
     x: 0,
     y: 0,
     size: 0,
   };
+
+  private buttonElement = React.createRef<HTMLButtonElement>();
 
   onMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!this.buttonElement.current) {
@@ -70,7 +70,6 @@ class ButtonBase extends React.Component<Props, State> {
   };
 
   onMouseEnter(e: React.SyntheticEvent<HTMLButtonElement>) {
-    console.log("enter");
     this.setState(state => {
       return {
         ...state,
@@ -80,7 +79,6 @@ class ButtonBase extends React.Component<Props, State> {
   }
 
   onMouseLeave(e: React.SyntheticEvent<HTMLButtonElement>) {
-    console.log("leave");
     this.setState(state => {
       return {
         ...state,

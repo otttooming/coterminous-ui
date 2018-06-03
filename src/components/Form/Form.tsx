@@ -23,9 +23,9 @@ export interface FormFieldState {
 const defaultValue: FormState = {
   fields: {},
   actions: {
-    setField: (field: FormFields) => {},
-    getField: () => {},
-    submit: () => {},
+    setField: (field: FormFields) => null,
+    getField: () => null,
+    submit: () => null,
   },
 };
 
@@ -66,9 +66,7 @@ export class FormProvider extends React.Component<FormProps, FormState> {
 
   submit = () => {
     const { fields } = this.state;
-    console.log(fields);
 
     return fields;
   };
 }
-

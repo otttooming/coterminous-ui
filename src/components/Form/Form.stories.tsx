@@ -37,7 +37,11 @@ storiesOf("Form", module)
             <FormContext.Consumer>
               {props => (
                 <Button
-                  onClick={() => console.log("1", props.actions.submit())}
+                  onClick={() => {
+                    /* tslint:disable */
+                    console.log("1", props.actions.submit());
+                    /* tslint:enable */
+                  }}
                 >
                   Submit
                 </Button>

@@ -1,4 +1,6 @@
 import * as React from "react";
+
+/* tslint:disable */
 import * as styledComponents from "styled-components";
 
 // TS error if some components not explicitly imported for tsconfig declaration export
@@ -11,6 +13,7 @@ import {
   InterpolationFunction, // Required for tsconfig declaration export
   ThemeProps, // Required for tsconfig declaration export
 } from "styled-components";
+/* tslint:enable */
 
 import { CoterminousStyledThemeProps } from "./theme";
 
