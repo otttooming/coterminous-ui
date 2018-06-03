@@ -18,6 +18,8 @@
     "build": "tsc -p tsconfig.dist.json",
     "clean": "rm -rf dist",
     "dist": "npm run clean && npm run build",
+    "lint": "npm run tslint && echo 'tslint check: OK'",
+    "tslint": "tslint --project ./tsconfig.json",
     "test": "jest --no-cache",
     "test:watch": "jest --watch",
     "test:update": " jest -u"
@@ -54,6 +56,12 @@
     "source-map-loader": "0.2.3",
     "ts-jest": "^22.4.6",
     "ts-loader": "4.3.1",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-eslint-rules": "^5.3.1",
+    "tslint-loader": "^3.6.0",
+    "tslint-plugin-prettier": "^1.3.0",
+    "tslint-react": "^3.6.0",
     "typescript": "2.9.1",
     "utility-types": "^2.0.0"
   },
