@@ -72,22 +72,3 @@ export class FormProvider extends React.Component<FormProps, FormState> {
   };
 }
 
-export interface withFormConsumerProps extends FormState {
-  name: string;
-}
-
-export function withFormConsumer<P extends withFormConsumerProps>(
-  Component: React.ComponentType<P>,
-) {
-  return class FormConsumer extends React.Component<P> {
-    render() {
-      const props = this.props;
-
-      return (
-        <FormContext.Consumer>
-          {consumerProps => <Component {...consumerProps} {...props} />}
-        </FormContext.Consumer>
-      );
-    }
-  };
-}
