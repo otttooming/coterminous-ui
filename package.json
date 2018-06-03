@@ -42,6 +42,7 @@
     "prettier": "1.13.4",
     "source-map-loader": "0.2.3",
     "ts-loader": "4.3.0",
-    "typescript": "2.9.1"
+    "typescript": "2.9.1",
+    "utility-types": "^2.0.0"
   }
 }
