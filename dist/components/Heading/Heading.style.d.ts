@@ -1,7 +1,9 @@
-import { Styles, StyledComponentClass, InterpolationFunction, ThemeProps, CoterminousStyledThemeProps } from "coterminous-styled";
-export declare const H1Style: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
-export declare const H2Style: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
-export declare const H3Style: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
-export declare const H4Style: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
-export declare const H5Style: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
-export declare const H6Style: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
+import { // Required for tsconfig declaration export
+ThemeProps, // Required for tsconfig declaration export
+CoterminousStyledThemeProps } from "coterminous-styled";
+export declare const H1Style: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];
+export declare const H2Style: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];
+export declare const H3Style: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];
+export declare const H4Style: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];
+export declare const H5Style: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];
+export declare const H6Style: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 export declare type RefHandler = (ref: HTMLElement | null) => void;
 export interface ReferenceChildrenProps {

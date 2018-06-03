@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 export interface FormProps {
 }
@@ -15,7 +14,7 @@ export interface FormFields {
     [key: string]: FormFieldState;
 }
 export interface FormFieldState {
-    value: any;
+    state: any;
 }
 export declare const FormContext: React.Context<FormState>;
 export declare class FormProvider extends React.Component<FormProps, FormState> {

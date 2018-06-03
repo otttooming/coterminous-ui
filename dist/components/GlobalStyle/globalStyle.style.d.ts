@@ -1,2 +1,1 @@
-import { Styles, StyledComponentClass } from "coterminous-styled";
-export declare const globalStyleCss: (string | number | false | Styles | StyledComponentClass<any, any, any>)[];
+export declare const globalStyleCss: import("../../../node_modules/styled-components/typings/styled-components").InterpolationValue[];

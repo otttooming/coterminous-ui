@@ -1,6 +1,6 @@
-/// <reference types="react" />
 import * as React from "react";
-import { StyledComponentClass, CoterminousStyledThemeProps } from "coterminous-styled";
+import { StyledComponentClass, // Required for tsconfig declaration export
+CoterminousStyledThemeProps } from "coterminous-styled";
 import { ControlWrapperProps } from "../ControlWrapper/ControlWrapper";
 export interface SelectItemProps {
     label: string;
@@ -22,6 +22,6 @@ export declare class SelectBase extends React.Component<SelectProps, State> {
     renderDropdownItem: (item: SelectItemProps) => string | JSX.Element;
     handleChange: (selected: SelectItemProps) => void;
 }
-export declare const Select: StyledComponentClass<SelectProps, CoterminousStyledThemeProps, Pick<SelectProps, "label" | "className" | "onChange" | "isRequired" | "items"> & {
+export declare const Select: StyledComponentClass<SelectProps, CoterminousStyledThemeProps, Pick<SelectProps, "className" | "onChange" | "label" | "isRequired" | "items"> & {
     theme?: CoterminousStyledThemeProps;
 }>;

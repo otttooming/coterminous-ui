@@ -1,2 +1,1 @@
-import { Styles, StyledComponentClass } from "coterminous-styled";
-export declare const visuallyHidden: (string | number | false | Styles | StyledComponentClass<any, any, any>)[];
+export declare const visuallyHidden: import("../../../../node_modules/styled-components/typings/styled-components").InterpolationValue[];

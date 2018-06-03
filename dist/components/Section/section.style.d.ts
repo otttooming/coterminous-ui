@@ -1,2 +1,4 @@
-import { Styles, StyledComponentClass, InterpolationFunction, ThemeProps, CoterminousStyledThemeProps } from "coterminous-styled";
-export declare const sectionStyle: (string | number | false | Styles | StyledComponentClass<any, any, any> | InterpolationFunction<ThemeProps<CoterminousStyledThemeProps>>)[];
+import { // Required for tsconfig declaration export
+ThemeProps, // Required for tsconfig declaration export
+CoterminousStyledThemeProps } from "coterminous-styled";
+export declare const sectionStyle: import("../../../node_modules/styled-components/typings/styled-components").FlattenInterpolation<ThemeProps<CoterminousStyledThemeProps>>[];

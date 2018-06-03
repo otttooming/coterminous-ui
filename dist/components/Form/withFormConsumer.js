@@ -6,7 +6,9 @@ function withFormConsumer(Component) {
     return class FormConsumer extends React.Component {
         render() {
             const props = this.props;
-            return (React.createElement(Form_1.FormContext.Consumer, null, consumerProps => (React.createElement(Component, Object.assign({}, consumerProps, props, { onChange: value => consumerProps.actions.setField({ [props.name]: value }) })))));
+            return (React.createElement(Form_1.FormContext.Consumer, null, consumerProps => (React.createElement(Component, Object.assign({}, consumerProps, props, { onChange: value => consumerProps.actions.setField({
+                    [props.name]: { state: value },
+                }) })))));
         }
     };
 }
