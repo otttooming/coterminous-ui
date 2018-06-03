@@ -17,6 +17,7 @@ import {
 } from "../ControlWrapper/ControlWrapper";
 import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
 import { Dropdown, arrowStyle } from "./popover.style";
+import { Arrow } from "./Arrow";
 
 export type RefHandler = (ref: HTMLElement | null) => void;
 
@@ -77,20 +78,3 @@ interface ArrowProps {
   className?: string;
   placement: string;
 }
-
-class ArrowBase extends React.Component<ArrowProps, any> {
-  render() {
-    return (
-      <div
-        ref={this.props.passedRef}
-        style={this.props.style}
-        className={this.props.className}
-        data-placement={this.props.placement}
-      />
-    );
-  }
-}
-
-const Arrow = styled(ArrowBase)`
-  ${arrowStyle};
-`;
