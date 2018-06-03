@@ -12,5 +12,5 @@ import {
 } from "coterminous-styled";
 
 export const CSSIcons = {
-  Checkmark: Checkmark,
+  Checkmark,
 };

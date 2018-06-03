@@ -26,11 +26,11 @@ export interface CoterminousStyledThemeProps {
 }
 
 export const theme: CoterminousStyledThemeProps = {
-  color: color,
-  background: background,
-  border: border,
-  spacing: spacing,
-  typeface: typeface,
-  transition: transition,
-  shadow: shadow,
+  color,
+  background,
+  border,
+  spacing,
+  typeface,
+  transition,
+  shadow,
 };
