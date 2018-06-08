@@ -29,7 +29,15 @@ export {
 } from "./components/Form/withFormConsumer";
 
 export { TextInputField } from "./components/TextInput/TextInputField";
+
+export {
+  Checkbox,
+  CheckboxProps,
+  CheckboxType,
+} from "./components/Checkbox/Checkbox";
 export { CheckboxField } from "./components/Checkbox/CheckboxField";
+
+export { RadioButtonField } from "./components/RadioButton/RadioButtonField";
 
 export { Section } from "./components/Section/Section";
 export { CSSIcons } from "./components/Icons/Icons";
