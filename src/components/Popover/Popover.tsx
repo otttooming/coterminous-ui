@@ -71,10 +71,3 @@ export class PopoverBase extends React.Component<PopoverProps, State> {
 }
 
 export const Popover = PopoverBase;
-
-interface ArrowProps {
-  passedRef: (ref: HTMLElement | null) => void;
-  style: React.CSSProperties;
-  className?: string;
-  placement: string;
-}
