@@ -23,10 +23,18 @@ import {
 } from "../ControlWrapper/ControlWrapper";
 import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
 
+export enum CheckboxType {
+  CHECKBOX = "checkbox",
+  RADIO = "radio",
+}
+
 export interface Props {
   onChange?: (value: boolean) => void;
   className?: string;
   inputLabel: React.ReactNode;
+  name: string;
+  value: any;
+  type?: CheckboxType;
 }
 
 interface State {
@@ -36,6 +44,10 @@ interface State {
 export type CheckboxProps = Props & ControlWrapperProps;
 
 class CheckboxBase extends React.Component<CheckboxProps, State> {
+  static defaultProps = {
+    type: CheckboxType.CHECKBOX,
+  };
+
   constructor(props: CheckboxProps) {
     super(props);
 
@@ -45,9 +57,16 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
   }
 
   render() {
-    const { className, children, inputLabel, ...restProps } = this.props;
+    const {
+      className,
+      children,
+      inputLabel,
+      type,
+      name,
+      ...restProps
+    } = this.props;
     const { isChecked } = this.state;
-    const attributes = { className };
+    const attributes = { className, name };
 
     return this.renderControlWrapper(
       <CheckboxLabelWrapper>
@@ -56,8 +75,9 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
         </InputWrapperStyle>
 
         <HiddenInput
-          type="checkbox"
+          type={type}
           {...attributes}
+          checked={this.state.isChecked}
           onChange={this.handleChange}
         />
         <span>{inputLabel}</span>
@@ -76,16 +96,16 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
   };
 
   handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const { onChange } = this.props;
+    const { onChange, value } = this.props;
 
-    const value: boolean = Boolean(event.currentTarget.checked);
+    const checked: boolean = Boolean(event.currentTarget.checked);
 
     this.setState({
-      isChecked: value,
+      isChecked: checked,
     });
 
     if (onChange) {
-      onChange(value);
+      onChange(checked ? value : undefined);
     }
   };
 }

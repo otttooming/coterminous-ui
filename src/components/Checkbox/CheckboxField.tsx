@@ -20,7 +20,7 @@ class CheckboxFieldBase extends React.Component<CheckboxFieldProps, State> {
   }
 
   render() {
-    const { name, ...rest } = this.props;
+    const { ...rest } = this.props;
 
     return <Checkbox {...rest} />;
   }

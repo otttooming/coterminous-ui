@@ -26,6 +26,7 @@ storiesOf("Checkbox", module)
               name="test_field"
               label="Label title"
               inputLabel="Input label"
+              value="test value"
             />
           </Section>
         </FormProvider>
