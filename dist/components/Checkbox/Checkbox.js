@@ -17,6 +17,11 @@ const checkbox_style_1 = require("./checkbox.style");
 const coterminous_styled_1 = require("coterminous-styled");
 const ControlWrapper_1 = require("../ControlWrapper/ControlWrapper");
 const controlWrapperHelper_1 = require("../ControlWrapper/controlWrapperHelper");
+var CheckboxType;
+(function (CheckboxType) {
+    CheckboxType["CHECKBOX"] = "checkbox";
+    CheckboxType["RADIO"] = "radio";
+})(CheckboxType = exports.CheckboxType || (exports.CheckboxType = {}));
 class CheckboxBase extends React.Component {
     constructor(props) {
         super(props);
@@ -25,13 +30,13 @@ class CheckboxBase extends React.Component {
             return (React.createElement(ControlWrapper_1.ControlWrapper, Object.assign({}, controlWrapperHelper_1.extractControlWrapperProps(this.props)), element));
         };
         this.handleChange = (event) => {
-            const { onChange } = this.props;
-            const value = Boolean(event.currentTarget.checked);
+            const { onChange, value } = this.props;
+            const checked = Boolean(event.currentTarget.checked);
             this.setState({
-                isChecked: value,
+                isChecked: checked,
             });
             if (onChange) {
-                onChange(value);
+                onChange(checked ? value : undefined);
             }
         };
         this.state = {
@@ -39,15 +44,18 @@ class CheckboxBase extends React.Component {
         };
     }
     render() {
-        const _a = this.props, { className, children, inputLabel } = _a, restProps = __rest(_a, ["className", "children", "inputLabel"]);
+        const _a = this.props, { className, children, inputLabel, type, name, checked } = _a, restProps = __rest(_a, ["className", "children", "inputLabel", "type", "name", "checked"]);
         const { isChecked } = this.state;
-        const attributes = { className };
+        const attributes = { className, name };
         return this.renderControlWrapper(React.createElement(checkbox_style_1.CheckboxLabelWrapper, null,
-            React.createElement(checkbox_style_1.InputWrapperStyle, null, isChecked && React.createElement(coterminous_styled_1.CSSIcons.Checkmark, null)),
-            React.createElement(checkbox_style_1.HiddenInput, Object.assign({ type: "checkbox" }, attributes, { onChange: this.handleChange })),
+            React.createElement(checkbox_style_1.InputWrapperStyle, null, (type === CheckboxType.RADIO ? checked : this.state.isChecked) && (React.createElement(coterminous_styled_1.CSSIcons.Checkmark, null))),
+            React.createElement(checkbox_style_1.HiddenInput, Object.assign({ type: type }, attributes, { checked: this.props.checked, onChange: this.handleChange })),
             React.createElement("span", null, inputLabel)));
     }
 }
+CheckboxBase.defaultProps = {
+    type: CheckboxType.CHECKBOX,
+};
 exports.Checkbox = coterminous_styled_1.styled(CheckboxBase) `
   ${checkbox_style_1.CheckboxStyle};
 `;

@@ -4,9 +4,9 @@ const React = require("react");
 const defaultValue = {
     fields: {},
     actions: {
-        setField: (field) => { },
-        getField: () => { },
-        submit: () => { },
+        setField: (field) => null,
+        getField: () => null,
+        submit: () => null,
     },
 };
 exports.FormContext = React.createContext(defaultValue);
@@ -22,7 +22,6 @@ class FormProvider extends React.Component {
         };
         this.submit = () => {
             const { fields } = this.state;
-            console.log(fields);
             return fields;
         };
         this.state = Object.assign({}, defaultValue, { actions: {
@@ -37,12 +36,3 @@ class FormProvider extends React.Component {
     }
 }
 exports.FormProvider = FormProvider;
-function withFormConsumer(Component) {
-    return class FormConsumer extends React.Component {
-        render() {
-            const props = this.props;
-            return (React.createElement(exports.FormContext.Consumer, null, consumerProps => React.createElement(Component, Object.assign({}, consumerProps, props))));
-        }
-    };
-}
-exports.withFormConsumer = withFormConsumer;

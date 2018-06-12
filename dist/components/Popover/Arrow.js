@@ -5,14 +5,12 @@ const React = require("react");
 // https://github.com/styled-components/styled-components/issues/1063
 // https://github.com/Microsoft/TypeScript/issues/9944
 const coterminous_styled_1 = require("coterminous-styled");
-const globalStyle_style_1 = require("./globalStyle.style");
-/* tslint:disable */
-coterminous_styled_1.injectGlobal `
-  ${globalStyle_style_1.globalStyleCss}
-`;
-class GlobalStyle extends React.Component {
+const popover_style_1 = require("./popover.style");
+class ArrowBase extends React.Component {
     render() {
-        return "";
+        return (React.createElement("div", { ref: this.props.passedRef, style: this.props.style, className: this.props.className, "data-placement": this.props.placement }));
     }
 }
-exports.GlobalStyle = GlobalStyle;
+exports.Arrow = coterminous_styled_1.styled(ArrowBase) `
+  ${popover_style_1.arrowStyle};
+`;

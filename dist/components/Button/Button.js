@@ -39,12 +39,12 @@ const StyledGlow = coterminous_styled_1.css `
 class ButtonBase extends React.Component {
     constructor() {
         super(...arguments);
-        this.buttonElement = React.createRef();
         this.state = {
             x: 0,
             y: 0,
             size: 0,
         };
+        this.buttonElement = React.createRef();
         this.onMouseMove = (e) => {
             if (!this.buttonElement.current) {
                 return;
@@ -64,13 +64,11 @@ class ButtonBase extends React.Component {
         };
     }
     onMouseEnter(e) {
-        console.log("enter");
         this.setState(state => {
             return Object.assign({}, state, { size: 100 });
         });
     }
     onMouseLeave(e) {
-        console.log("leave");
         this.setState(state => {
             return Object.assign({}, state, { size: 0 });
         });

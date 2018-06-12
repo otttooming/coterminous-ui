@@ -17,7 +17,7 @@ class CheckboxFieldBase extends React.Component {
         super(props);
     }
     render() {
-        const _a = this.props, { name } = _a, rest = __rest(_a, ["name"]);
+        const rest = __rest(this.props, []);
         return React.createElement(Checkbox_1.Checkbox, Object.assign({}, rest));
     }
 }
