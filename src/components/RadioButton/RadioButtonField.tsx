@@ -14,7 +14,8 @@ interface State {}
 
 export type RadioButtonFieldProps = Props &
   CheckboxProps &
-  ExternalWithFormConsumerProps;
+  ExternalWithFormConsumerProps &
+  Partial<FormState>;
 
 class RadioButtonFieldBase extends React.Component<
   RadioButtonFieldProps,
@@ -25,9 +26,22 @@ class RadioButtonFieldBase extends React.Component<
   }
 
   render() {
-    const { ...rest } = this.props;
+    const { fields, name, value, label, inputLabel, onChange } = this.props;
 
-    return <Checkbox {...rest} type={CheckboxType.RADIO} />;
+    const checked: boolean =
+      fields && fields[name] ? value === fields[name].state : false;
+
+    return (
+      <Checkbox
+        type={CheckboxType.RADIO}
+        name={name}
+        label={label}
+        value={value}
+        inputLabel={inputLabel}
+        checked={checked}
+        onChange={onChange}
+      />
+    );
   }
 }
 

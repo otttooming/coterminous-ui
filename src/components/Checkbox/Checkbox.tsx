@@ -35,6 +35,7 @@ export interface Props {
   name: string;
   value: any;
   type?: CheckboxType;
+  checked?: boolean;
 }
 
 interface State {
@@ -63,6 +64,7 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
       inputLabel,
       type,
       name,
+      checked,
       ...restProps
     } = this.props;
     const { isChecked } = this.state;
@@ -71,13 +73,15 @@ class CheckboxBase extends React.Component<CheckboxProps, State> {
     return this.renderControlWrapper(
       <CheckboxLabelWrapper>
         <InputWrapperStyle>
-          {isChecked && <CSSIcons.Checkmark />}
+          {(type === CheckboxType.RADIO ? checked : this.state.isChecked) && (
+            <CSSIcons.Checkmark />
+          )}
         </InputWrapperStyle>
 
         <HiddenInput
           type={type}
           {...attributes}
-          checked={this.state.isChecked}
+          checked={this.props.checked}
           onChange={this.handleChange}
         />
         <span>{inputLabel}</span>
