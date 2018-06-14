@@ -41,7 +41,11 @@ class SelectBase extends React.Component {
             : undefined;
         return this.renderControlWrapper(React.createElement(downshift_1.default, { onChange: this.handleChange, itemToString: item => (!!item ? item.label : ""), render: ({ getInputProps, getItemProps, getLabelProps, isOpen, inputValue, highlightedIndex, selectedItem, }) => (React.createElement("div", null,
                 React.createElement(coterminous_styled_1.Popover, { isOpen: isOpen, popoverChildren: () => (React.createElement("div", null, items
-                        .filter(i => !inputValue || i.label.includes(inputValue))
+                        .filter(({ searchTerms }) => !inputValue ||
+                        (!!searchTerms &&
+                            searchTerms
+                                .join(" ")
+                                .match(new RegExp(inputValue, "gi"))))
                         .map((item, index) => (React.createElement("div", Object.assign({}, getItemProps({
                         key: index,
                         index,

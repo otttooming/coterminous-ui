@@ -6,6 +6,7 @@ export interface SelectItemProps {
     label: string;
     renderContent?: JSX.Element;
     value: any;
+    searchTerms?: string[];
 }
 export interface Props {
     items: SelectItemProps[];
