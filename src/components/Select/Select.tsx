@@ -25,6 +25,7 @@ export interface SelectItemProps {
   label: string;
   renderContent?: JSX.Element;
   value: any;
+  searchTerms?: string[];
 }
 export interface Props {
   items: SelectItemProps[];
@@ -66,7 +67,14 @@ export class SelectBase extends React.Component<SelectProps, State> {
               popoverChildren={() => (
                 <div>
                   {items
-                    .filter(i => !inputValue || i.label.includes(inputValue))
+                    .filter(
+                      ({ searchTerms }) =>
+                        !inputValue ||
+                        (!!searchTerms &&
+                          searchTerms
+                            .join(" ")
+                            .match(new RegExp(inputValue, "gi"))),
+                    )
                     .map((item, index) => (
                       <div
                         {...getItemProps({
