@@ -22,7 +22,7 @@ class PopoverBase extends React.Component {
         const attributes = Object.assign({}, restProps);
         return (React.createElement(react_popper_1.Manager, null,
             React.createElement(react_popper_1.Reference, null, props => this.props.children(props)),
-            this.props.isOpen && (React.createElement(react_popper_1.Popper, { placement: "bottom" }, ({ ref, style, placement, arrowProps }) => (React.createElement("aside", { ref: ref, style: style, "data-placement": placement },
+            this.props.isOpen && (React.createElement(react_popper_1.Popper, { placement: "bottom", modifiers: { preventOverflow: { enabled: false } } }, ({ ref, style, placement, arrowProps }) => (React.createElement("aside", { ref: ref, style: style, "data-placement": placement },
                 React.createElement(Arrow_1.Arrow, { passedRef: arrowProps.ref, style: arrowProps.style, placement: placement }),
                 React.createElement(popover_style_1.Dropdown, { "data-placement": placement }, this.props.popoverChildren())))))));
     }

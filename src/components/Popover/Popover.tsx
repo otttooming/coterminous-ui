@@ -50,7 +50,10 @@ export class PopoverBase extends React.Component<PopoverProps, State> {
         <Reference>{props => this.props.children(props)}</Reference>
 
         {this.props.isOpen && (
-          <Popper placement="bottom">
+          <Popper
+            placement="bottom"
+            modifiers={{ preventOverflow: { enabled: false } }}
+          >
             {({ ref, style, placement, arrowProps }) => (
               <aside ref={ref} style={style} data-placement={placement}>
                 <Arrow
