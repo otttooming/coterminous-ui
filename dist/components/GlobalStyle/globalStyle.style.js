@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // https://github.com/Microsoft/TypeScript/issues/9944
 const coterminous_styled_1 = require("coterminous-styled");
 const constants_1 = require("../../common/styles/constants");
+const legacy_style_1 = require("./legacy.style");
 exports.globalStyleCss = coterminous_styled_1.css `
   * {
     box-sizing: border-box;
@@ -25,4 +26,6 @@ exports.globalStyleCss = coterminous_styled_1.css `
     font-family: ${constants_1.typeface.name.primary};
     color: ${constants_1.color.white};
   }
+
+  ${legacy_style_1.legacy};
 `;
