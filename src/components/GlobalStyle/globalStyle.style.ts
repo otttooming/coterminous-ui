@@ -11,6 +11,7 @@ import {
   CoterminousStyledThemeProps, // Required for tsconfig declaration export
 } from "coterminous-styled";
 import { typeface, color } from "../../common/styles/constants";
+import { legacy } from "./legacy.style";
 
 export const globalStyleCss = css`
   * {
@@ -32,4 +33,6 @@ export const globalStyleCss = css`
     font-family: ${typeface.name.primary};
     color: ${color.white};
   }
+
+  ${legacy};
 `;
