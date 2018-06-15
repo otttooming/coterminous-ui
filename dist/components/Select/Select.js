@@ -29,7 +29,7 @@ class SelectBase extends React.Component {
         this.handleChange = (selected) => {
             const { onChange } = this.props;
             if (onChange) {
-                onChange(selected);
+                onChange(selected.value);
             }
             this.setState({ selected });
         };

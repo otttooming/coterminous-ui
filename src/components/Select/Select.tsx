@@ -133,7 +133,7 @@ export class SelectBase extends React.Component<SelectProps, State> {
     const { onChange } = this.props;
 
     if (onChange) {
-      onChange(selected);
+      onChange(selected.value);
     }
 
     this.setState({ selected });
