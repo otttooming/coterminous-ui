@@ -245,45 +245,6 @@ export const legacy = css`
     color: rgba(255, 255, 255, 0.5);
   }
 
-  select,
-  input[type="text"],
-  input[type="tel"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"] {
-    box-sizing: border-box;
-    margin: 8px 0;
-    padding: 0 10px;
-    vertical-align: middle;
-    color: inherit;
-    border: none;
-    border-radius: 15px;
-    outline: none;
-    background: rgba(186, 0, 251, 0.15);
-    box-shadow: none;
-    font-size: 0.875em;
-    line-height: 30px;
-    height: 30px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-
-  select {
-    cursor: pointer;
-    font-family: "Oswald", "Helvetica Neue", Arial, sans-serif;
-    background: #ffc000;
-    color: #340644;
-    border-radius: 4px;
-    max-width: 100%;
-  }
-
-  label {
-    display: block;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-  }
-
   textarea {
     box-sizing: border-box;
     color: #fff;
