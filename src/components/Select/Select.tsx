@@ -52,7 +52,8 @@ export class SelectBase extends React.Component<SelectProps, State> {
       <Downshift
         onChange={this.handleChange}
         itemToString={item => (!!item ? item.label : "")}
-        render={({
+      >
+        {({
           getInputProps,
           getItemProps,
           getLabelProps,
@@ -103,7 +104,7 @@ export class SelectBase extends React.Component<SelectProps, State> {
             </Popover>
           </div>
         )}
-      />,
+      </Downshift>,
     );
   }
 
