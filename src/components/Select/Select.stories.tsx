@@ -15,11 +15,19 @@ import {
 } from "coterminous-styled";
 
 const selectItems: SelectItemProps[] = [
-  { label: "Apple tree", value: { pickup: "Pickup value" } },
+  {
+    label: "Apple tree",
+    value: { pickup: "Pickup value" },
+    renderContent: <div style={{ color: "red" }}>Lemon blue</div>,
+    group: [{ label: "second" }],
+    searchTerms: ["red"],
+  },
   {
     label: "Lemon tree",
     value: { pickup: "Pickup value" },
     renderContent: <div style={{ color: "red" }}>Lemon red</div>,
+    group: [{ label: "first" }],
+    searchTerms: ["red"],
   },
 ];
 

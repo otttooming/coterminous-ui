@@ -18,14 +18,22 @@ import {
   ControlWrapperProps,
 } from "../ControlWrapper/ControlWrapper";
 import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelper";
-import Downshift from "downshift";
+import Downshift, {
+  GetItemPropsOptions,
+  ControllerStateAndHelpers,
+} from "downshift";
 import { selectInputStyle } from "./select.style";
+
+export interface SelectGroupProps {
+  label: string;
+}
 
 export interface SelectItemProps {
   label: string;
   renderContent?: JSX.Element;
   value: any;
   searchTerms?: string[];
+  group: SelectGroupProps[];
 }
 export interface Props {
   items: SelectItemProps[];
@@ -37,6 +45,10 @@ export interface State {
 }
 
 export type SelectProps = Props & ControlWrapperProps;
+
+export interface SelectGroupedNodes {
+  [key: string]: React.ReactNode;
+}
 
 export class SelectBase extends React.Component<SelectProps, State> {
   state: State = { selected: undefined };
@@ -53,57 +65,32 @@ export class SelectBase extends React.Component<SelectProps, State> {
         onChange={this.handleChange}
         itemToString={item => (!!item ? item.label : "")}
       >
-        {({
-          getInputProps,
-          getItemProps,
-          getLabelProps,
-          isOpen,
-          inputValue,
-          highlightedIndex,
-          selectedItem,
-        }) => (
-          <div>
-            <Popover
-              isOpen={isOpen}
-              popoverChildren={() => (
-                <div>
-                  {items
-                    .filter(
-                      ({ searchTerms }) =>
-                        !inputValue ||
-                        (!!searchTerms &&
-                          searchTerms
-                            .join(" ")
-                            .match(new RegExp(inputValue, "gi"))),
-                    )
-                    .map((item, index) => (
-                      <div
-                        {...getItemProps({
-                          key: index,
-                          index,
-                          item,
-                          style: {
-                            backgroundColor:
-                              highlightedIndex === index
-                                ? "lightgray"
-                                : "white",
-                            fontWeight:
-                              selectedItem === item ? "bold" : "normal",
-                          },
-                        })}
-                      >
-                        {this.renderDropdownItem(item)}
-                      </div>
-                    ))}
-                </div>
-              )}
-            >
-              {({ ref }) => (
-                <input ref={ref} className={className} {...getInputProps()} />
-              )}
-            </Popover>
-          </div>
-        )}
+        {options => {
+          const {
+            getInputProps,
+            getItemProps,
+            getLabelProps,
+            isOpen,
+            inputValue,
+            highlightedIndex,
+            selectedItem,
+          } = options;
+
+          return (
+            <div>
+              <Popover
+                isOpen={isOpen}
+                popoverChildren={() =>
+                  this.renderPopoverChildren(options, items)
+                }
+              >
+                {({ ref }) => (
+                  <input ref={ref} className={className} {...getInputProps()} />
+                )}
+              </Popover>
+            </div>
+          );
+        }}
       </Downshift>,
     );
   }
@@ -117,6 +104,90 @@ export class SelectBase extends React.Component<SelectProps, State> {
       </ControlWrapper>
     );
   };
+
+  renderPopoverChildren(
+    options: ControllerStateAndHelpers<any>,
+    items: SelectItemProps[],
+  ): React.ReactNode {
+    const {
+      getInputProps,
+      getItemProps,
+      getLabelProps,
+      isOpen,
+      inputValue,
+      highlightedIndex,
+      selectedItem,
+    } = options;
+
+    const reduc: { [key: string]: React.ReactNode } = items
+      .filter(
+        ({ searchTerms }) =>
+          !inputValue ||
+          (!!searchTerms &&
+            searchTerms.join(" ").match(new RegExp(inputValue, "gi"))),
+      )
+      .reduce(
+        (acc, cur, index) => {
+          const item: JSX.Element = this.renderSelectItem(options, cur, index);
+
+          const newAcc = { ...acc };
+
+          if (!acc[cur.group[0].label]) {
+            newAcc[cur.group[0].label] = [item];
+
+            return newAcc;
+          }
+
+          newAcc[cur.group[0].label] = [...acc[cur.group[0].label], item];
+
+          return newAcc;
+        },
+        {} as any,
+      );
+
+    const groupedItems = Object.entries(reduc).map((arr, index) => {
+      return (
+        <div key={index}>
+          <h1>{arr[0]}</h1>
+          <ul>{arr[1]}</ul>
+        </div>
+      );
+    });
+
+    return <div>{groupedItems}</div>;
+  }
+
+  renderSelectItem(
+    options: ControllerStateAndHelpers<any>,
+    selectItem: SelectItemProps,
+    index: number,
+  ): JSX.Element {
+    const {
+      getInputProps,
+      getItemProps,
+      getLabelProps,
+      isOpen,
+      inputValue,
+      highlightedIndex,
+      selectedItem,
+    } = options;
+
+    return (
+      <div
+        {...getItemProps({
+          key: index,
+          index,
+          item: selectItem,
+          style: {
+            backgroundColor: highlightedIndex === index ? "lightgray" : "white",
+            fontWeight: selectedItem === selectItem ? "bold" : "normal",
+          },
+        })}
+      >
+        {this.renderDropdownItem(selectItem)}
+      </div>
+    );
+  }
 
   renderDropdownItem = (item: SelectItemProps) => {
     if (!item) {
