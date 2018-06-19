@@ -47,7 +47,7 @@ export interface State {
 export type SelectProps = Props & ControlWrapperProps;
 
 export interface SelectGroupedNodes {
-  [key: string]: React.ReactNode;
+  [key: string]: React.ReactNode[];
 }
 
 export class SelectBase extends React.Component<SelectProps, State> {
@@ -119,31 +119,25 @@ export class SelectBase extends React.Component<SelectProps, State> {
       selectedItem,
     } = options;
 
-    const reduc: { [key: string]: React.ReactNode } = items
-      .filter(
-        ({ searchTerms }) =>
-          !inputValue ||
-          (!!searchTerms &&
-            searchTerms.join(" ").match(new RegExp(inputValue, "gi"))),
-      )
-      .reduce(
-        (acc, cur, index) => {
-          const item: JSX.Element = this.renderSelectItem(options, cur, index);
+    const ob: SelectGroupedNodes = {};
 
-          const newAcc = { ...acc };
+    const reduc: SelectGroupedNodes = items
+      .filter(this.getFilteredResults(inputValue))
+      .reduce((acc, cur, index) => {
+        const item: JSX.Element = this.renderSelectItem(options, cur, index);
 
-          if (!acc[cur.group[0].label]) {
-            newAcc[cur.group[0].label] = [item];
+        const newAcc = { ...acc };
 
-            return newAcc;
-          }
-
-          newAcc[cur.group[0].label] = [...acc[cur.group[0].label], item];
+        if (!acc[cur.group[0].label]) {
+          newAcc[cur.group[0].label] = [item];
 
           return newAcc;
-        },
-        {} as any,
-      );
+        }
+
+        newAcc[cur.group[0].label] = [...acc[cur.group[0].label], item];
+
+        return newAcc;
+      }, ob);
 
     const groupedItems = Object.entries(reduc).map((arr, index) => {
       return (
@@ -209,6 +203,18 @@ export class SelectBase extends React.Component<SelectProps, State> {
     }
 
     this.setState({ selected });
+  };
+
+  getFilteredResults = (inputValue: string | null) => (
+    item: SelectItemProps,
+  ) => {
+    const { searchTerms } = item;
+
+    return (
+      !inputValue ||
+      (!!searchTerms &&
+        searchTerms.join(" ").match(new RegExp(inputValue, "gi")))
+    );
   };
 }
 
