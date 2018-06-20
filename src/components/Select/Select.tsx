@@ -244,11 +244,13 @@ export class SelectBase extends React.Component<SelectProps, State> {
   getFilteredResults = (inputValue: string | null) => (
     item: SelectItemProps,
   ): boolean => {
-    const { searchTerms } = item;
+    const { searchTerms, label } = item;
 
     if (!inputValue || !searchTerms) {
       return true;
     }
+
+    searchTerms.push(label);
 
     return !!searchTerms.join(" ").match(new RegExp(inputValue, "gi"));
   };
