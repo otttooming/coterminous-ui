@@ -42,6 +42,7 @@ export interface Props {
 
 export interface State {
   selected: SelectItemProps | undefined;
+  isOpen: boolean;
 }
 
 export type SelectProps = Props & ControlWrapperProps;
@@ -51,7 +52,7 @@ export interface SelectGroupedNodes {
 }
 
 export class SelectBase extends React.Component<SelectProps, State> {
-  state: State = { selected: undefined };
+  state: State = { selected: undefined, isOpen: false };
 
   render() {
     const { items, className } = this.props;
@@ -62,8 +63,10 @@ export class SelectBase extends React.Component<SelectProps, State> {
 
     return this.renderControlWrapper(
       <Downshift
-        onChange={this.handleChange}
+        onChange={this.handleDownshiftChange}
         itemToString={item => (!!item ? item.label : "")}
+        isOpen={this.state.isOpen}
+        onInputValueChange={this.handleInputValueChange}
       >
         {options => {
           const {
@@ -85,7 +88,13 @@ export class SelectBase extends React.Component<SelectProps, State> {
                 }
               >
                 {({ ref }) => (
-                  <input ref={ref} className={className} {...getInputProps()} />
+                  <input
+                    ref={ref}
+                    className={className}
+                    {...getInputProps()}
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                  />
                 )}
               </Popover>
             </div>
@@ -195,14 +204,34 @@ export class SelectBase extends React.Component<SelectProps, State> {
     return item.label;
   };
 
-  handleChange = (selected: SelectItemProps) => {
+  handleDownshiftChange = (selected: SelectItemProps) => {
     const { onChange } = this.props;
 
     if (onChange) {
       onChange(selected.value);
     }
 
-    this.setState({ selected });
+    this.setState({ selected, isOpen: false });
+  };
+
+  handleInputValueChange = () => {
+    if (!this.state.isOpen) {
+      this.setState({
+        isOpen: true,
+      });
+    }
+  };
+
+  handleFocus = () => {
+    this.setState({
+      isOpen: true,
+    });
+  };
+
+  handleBlur = () => {
+    this.setState({
+      isOpen: false,
+    });
   };
 
   getFilteredResults = (inputValue: string | null) => (
