@@ -21,6 +21,8 @@ import { extractControlWrapperProps } from "../ControlWrapper/controlWrapperHelp
 import Downshift, {
   GetItemPropsOptions,
   ControllerStateAndHelpers,
+  DownshiftState,
+  StateChangeOptions,
 } from "downshift";
 import { selectInputStyle } from "./select.style";
 
@@ -42,7 +44,6 @@ export interface Props {
 
 export interface State {
   selected: SelectItemProps | undefined;
-  isOpen: boolean;
 }
 
 export type SelectProps = Props & ControlWrapperProps;
@@ -52,7 +53,7 @@ export interface SelectGroupedNodes {
 }
 
 export class SelectBase extends React.Component<SelectProps, State> {
-  state: State = { selected: undefined, isOpen: false };
+  state: State = { selected: undefined };
 
   render() {
     const { items, className } = this.props;
@@ -65,8 +66,7 @@ export class SelectBase extends React.Component<SelectProps, State> {
       <Downshift
         onChange={this.handleDownshiftChange}
         itemToString={item => (!!item ? item.label : "")}
-        isOpen={this.state.isOpen}
-        onInputValueChange={this.handleInputValueChange}
+        stateReducer={this.stateReducer}
       >
         {options => {
           const {
@@ -77,6 +77,8 @@ export class SelectBase extends React.Component<SelectProps, State> {
             inputValue,
             highlightedIndex,
             selectedItem,
+            setState,
+            clearSelection,
           } = options;
 
           return (
@@ -92,8 +94,7 @@ export class SelectBase extends React.Component<SelectProps, State> {
                     ref={ref}
                     className={className}
                     {...getInputProps()}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
+                    onFocus={this.handleFocus(setState)}
                   />
                 )}
               </Popover>
@@ -204,34 +205,40 @@ export class SelectBase extends React.Component<SelectProps, State> {
     return item.label;
   };
 
-  handleDownshiftChange = (selected: SelectItemProps) => {
+  stateReducer(state: DownshiftState<any>, changes: StateChangeOptions<any>) {
+    switch (changes.type) {
+      case Downshift.stateChangeTypes.blurInput:
+        return {
+          ...changes,
+          isOpen: false,
+        };
+      default:
+        return changes;
+    }
+  }
+
+  handleDownshiftChange = (selected: SelectItemProps | undefined) => {
     const { onChange } = this.props;
 
     if (onChange) {
-      onChange(selected.value);
+      onChange(!selected ? undefined : selected.value);
     }
 
-    this.setState({ selected, isOpen: false });
+    this.setState({ selected });
   };
 
-  handleInputValueChange = () => {
-    if (!this.state.isOpen) {
-      this.setState({
-        isOpen: true,
-      });
+  handleFocus = (
+    setState: (
+      stateToSet: Partial<StateChangeOptions<any>>,
+      cb?: () => void,
+    ) => void,
+    clearSelection?: () => void,
+  ) => () => {
+    if (clearSelection) {
+      clearSelection();
     }
-  };
 
-  handleFocus = () => {
-    this.setState({
-      isOpen: true,
-    });
-  };
-
-  handleBlur = () => {
-    this.setState({
-      isOpen: false,
-    });
+    setState({ isOpen: true });
   };
 
   getFilteredResults = (inputValue: string | null) => (
