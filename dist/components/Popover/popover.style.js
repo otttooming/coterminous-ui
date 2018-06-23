@@ -13,6 +13,8 @@ exports.dropdownStyle = coterminous_styled_1.css `
   position: relative;
   min-width: 300px;
   box-shadow: 0 41px 66px 0 rgba(0, 0, 0, 0.2);
+  max-height: 300px;
+  overflow-y: scroll;
   &[data-placement*="bottom"] {
     top: ${exports.arrowCorrection};
   }

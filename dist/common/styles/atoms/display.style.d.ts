@@ -1,1 +1,1 @@
-export declare const visuallyHidden: import("../../../../node_modules/styled-components/typings/styled-components").InterpolationValue[];
+export declare const visuallyHidden: import("../../../../../../../../../Users/ott/projects/personal/coterminous-styled/node_modules/styled-components").InterpolationValue[];
