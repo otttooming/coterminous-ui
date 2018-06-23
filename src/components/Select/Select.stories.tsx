@@ -18,16 +18,15 @@ const selectItems: SelectItemProps[] = [
   {
     label: "Apple tree",
     value: { pickup: "Pickup value" },
-    renderContent: <div style={{ color: "red" }}>Lemon blue</div>,
     group: [{ label: "second" }],
     searchTerms: ["red"],
   },
   {
     label: "Lemon tree",
-    value: { pickup: "Pickup value" },
-    renderContent: <div style={{ color: "red" }}>Lemon red</div>,
+    value: { pickup: "Alt value" },
     group: [{ label: "first" }],
     searchTerms: ["red"],
+    meta: [{ label: "red" }],
   },
 ];
 

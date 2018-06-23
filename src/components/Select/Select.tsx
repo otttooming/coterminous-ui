@@ -30,12 +30,16 @@ export interface SelectGroupProps {
   label: string;
 }
 
+export interface SelectMetaProps {
+  label: string;
+}
+
 export interface SelectItemProps {
   label: string;
-  renderContent?: JSX.Element;
   value: any;
   searchTerms?: string[];
   group: SelectGroupProps[];
+  meta?: SelectMetaProps[];
 }
 export interface Props {
   items: SelectItemProps[];
@@ -198,11 +202,16 @@ export class SelectBase extends React.Component<SelectProps, State> {
       return null;
     }
 
-    if (item.renderContent) {
-      return item.renderContent;
+    if (!item.meta) {
+      return item.label;
     }
 
-    return item.label;
+    return (
+      <div>
+        {item.label}
+        <ul>{item.meta.map(({ label }) => label)}</ul>
+      </div>
+    );
   };
 
   stateReducer(state: DownshiftState<any>, changes: StateChangeOptions<any>) {
