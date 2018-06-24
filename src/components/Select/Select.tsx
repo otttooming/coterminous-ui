@@ -34,11 +34,15 @@ export interface SelectMetaProps {
   label: string;
 }
 
+export interface SelectSearchProps {
+  label: string;
+}
+
 export interface SelectItemProps {
   label: string;
   value: any;
-  searchTerms?: string[];
-  group: SelectGroupProps[];
+  searchTerms?: SelectSearchProps[];
+  group?: SelectGroupProps;
   meta?: SelectMetaProps[];
 }
 export interface Props {
@@ -54,6 +58,10 @@ export type SelectProps = Props & ControlWrapperProps;
 
 export interface SelectGroupedNodes {
   [key: string]: React.ReactNode[];
+}
+
+export enum SELECT_GROUP {
+  NOT_GROUPED = "NOT_GROUPED",
 }
 
 export class SelectBase extends React.Component<SelectProps, State> {
@@ -142,13 +150,28 @@ export class SelectBase extends React.Component<SelectProps, State> {
 
         const newAcc = { ...acc };
 
-        if (!acc[cur.group[0].label]) {
-          newAcc[cur.group[0].label] = [item];
+        if (!cur.group && !newAcc[SELECT_GROUP.NOT_GROUPED]) {
+          newAcc[SELECT_GROUP.NOT_GROUPED] = [item];
 
           return newAcc;
         }
 
-        newAcc[cur.group[0].label] = [...acc[cur.group[0].label], item];
+        if (!cur.group) {
+          newAcc[SELECT_GROUP.NOT_GROUPED] = [
+            ...acc[SELECT_GROUP.NOT_GROUPED],
+            item,
+          ];
+
+          return newAcc;
+        }
+
+        if (!acc[cur.group.label]) {
+          newAcc[cur.group.label] = [item];
+
+          return newAcc;
+        }
+
+        newAcc[cur.group.label] = [...acc[cur.group.label], item];
 
         return newAcc;
       }, ob);
@@ -259,9 +282,11 @@ export class SelectBase extends React.Component<SelectProps, State> {
       return true;
     }
 
-    searchTerms.push(label);
+    const searchTermLabels: string[] = searchTerms.map(term => term.label);
 
-    return !!searchTerms.join(" ").match(new RegExp(inputValue, "gi"));
+    searchTermLabels.push(label);
+
+    return !!searchTermLabels.join(" ").match(new RegExp(inputValue, "gi"));
   };
 }
 

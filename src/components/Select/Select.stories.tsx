@@ -18,14 +18,27 @@ const selectItems: SelectItemProps[] = [
   {
     label: "Apple tree",
     value: { pickup: "Pickup value" },
-    group: [{ label: "second" }],
-    searchTerms: ["red"],
+    group: { label: "second" },
+    searchTerms: [{ label: "red" }],
   },
   {
     label: "Lemon tree",
     value: { pickup: "Alt value" },
-    group: [{ label: "first" }],
-    searchTerms: ["red"],
+    group: { label: "first" },
+    searchTerms: [{ label: "red" }],
+    meta: [{ label: "red" }],
+  },
+  {
+    label: "unosrted tree",
+    value: { pickup: "Alt value" },
+    searchTerms: [{ label: "red" }],
+    meta: [{ label: "red" }],
+  },
+  {
+    label: "Prune tree",
+    value: { pickup: "Alt value" },
+    group: { label: "first" },
+    searchTerms: [{ label: "red" }],
     meta: [{ label: "red" }],
   },
 ];
