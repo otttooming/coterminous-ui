@@ -9,6 +9,10 @@ const ControlWrapper_1 = require("../ControlWrapper/ControlWrapper");
 const controlWrapperHelper_1 = require("../ControlWrapper/controlWrapperHelper");
 const downshift_1 = require("downshift");
 const select_style_1 = require("./select.style");
+var SELECT_GROUP;
+(function (SELECT_GROUP) {
+    SELECT_GROUP["NOT_GROUPED"] = "NOT_GROUPED";
+})(SELECT_GROUP = exports.SELECT_GROUP || (exports.SELECT_GROUP = {}));
 class SelectBase extends React.Component {
     constructor() {
         super(...arguments);
@@ -46,8 +50,9 @@ class SelectBase extends React.Component {
             if (!inputValue || !searchTerms) {
                 return true;
             }
-            searchTerms.push(label);
-            return !!searchTerms.join(" ").match(new RegExp(inputValue, "gi"));
+            const searchTermLabels = searchTerms.map(term => term.label);
+            searchTermLabels.push(label);
+            return !!searchTermLabels.join(" ").match(new RegExp(inputValue, "gi"));
         };
     }
     render() {
@@ -69,11 +74,22 @@ class SelectBase extends React.Component {
             .reduce((acc, cur, index) => {
             const item = this.renderSelectItem(options, cur, index);
             const newAcc = Object.assign({}, acc);
-            if (!acc[cur.group[0].label]) {
-                newAcc[cur.group[0].label] = [item];
+            if (!cur.group && !newAcc[SELECT_GROUP.NOT_GROUPED]) {
+                newAcc[SELECT_GROUP.NOT_GROUPED] = [item];
                 return newAcc;
             }
-            newAcc[cur.group[0].label] = [...acc[cur.group[0].label], item];
+            if (!cur.group) {
+                newAcc[SELECT_GROUP.NOT_GROUPED] = [
+                    ...acc[SELECT_GROUP.NOT_GROUPED],
+                    item,
+                ];
+                return newAcc;
+            }
+            if (!acc[cur.group.label]) {
+                newAcc[cur.group.label] = [item];
+                return newAcc;
+            }
+            newAcc[cur.group.label] = [...acc[cur.group.label], item];
             return newAcc;
         }, ob);
         const groupedItems = Object.entries(reduc).map((arr, index) => {

@@ -9,11 +9,14 @@ export interface SelectGroupProps {
 export interface SelectMetaProps {
     label: string;
 }
+export interface SelectSearchProps {
+    label: string;
+}
 export interface SelectItemProps {
     label: string;
     value: any;
-    searchTerms?: string[];
-    group: SelectGroupProps[];
+    searchTerms?: SelectSearchProps[];
+    group?: SelectGroupProps;
     meta?: SelectMetaProps[];
 }
 export interface Props {
@@ -26,6 +29,9 @@ export interface State {
 export declare type SelectProps = Props & ControlWrapperProps;
 export interface SelectGroupedNodes {
     [key: string]: React.ReactNode[];
+}
+export declare enum SELECT_GROUP {
+    NOT_GROUPED = "NOT_GROUPED"
 }
 export declare class SelectBase extends React.Component<SelectProps, State> {
     state: State;
