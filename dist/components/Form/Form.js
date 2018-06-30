@@ -22,7 +22,9 @@ class FormProvider extends React.Component {
         };
         this.submit = () => {
             const { fields } = this.state;
-            return fields;
+            return {
+                fields,
+            };
         };
         this.state = Object.assign({}, defaultValue, { actions: {
                 setField: value => this.setField(value),

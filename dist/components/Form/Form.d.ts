@@ -16,11 +16,14 @@ export interface FormFields {
 export interface FormFieldState {
     state: any;
 }
+export interface FormSubmit {
+    fields: FormFields;
+}
 export declare const FormContext: React.Context<FormState>;
 export declare class FormProvider extends React.Component<FormProps, FormState> {
     constructor(props: FormProps);
     render(): JSX.Element;
     setField: (field: FormFields) => void;
     getField: (field: string) => FormFieldState;
-    submit: () => FormFields;
+    submit: () => FormSubmit;
 }
