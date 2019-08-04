@@ -1,22 +1,16 @@
-const path = require("path");
-const include = path.resolve(__dirname, "../");
+const path = require('path');
 
-module.exports = {
-  // Add '.ts' and '.tsx' as resolvable extensions.
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"],
-    alias: {
-      "coterminous-styled": path.join(__dirname, "../src"),
-    },
-  },
-  module: {
-    rules: [
+module.exports = ({ config, mode }) => {
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    exclude: path.resolve(__dirname, 'node_modules'),
+    use: [
       {
-        test: /\.tsx?$/,
-        loader: "babel-loader!ts-loader",
-        exclude: /node_modules/,
-        include,
+        loader: require.resolve('babel-loader'),
       },
     ],
-  },
+  });
+
+  config.resolve.extensions.push('.ts', '.tsx');
+  return config;
 };

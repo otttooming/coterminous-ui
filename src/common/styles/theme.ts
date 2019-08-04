@@ -1,36 +1,24 @@
 import {
-  ColorProps,
-  BackgroundProps,
-  BorderProps,
-  SpacingProps,
-  TypefaceProps,
-  TransitionProps,
-  ShadowProps,
+  fontSize,
+  lineHeight,
+  borderRadius,
+  space,
+  setThemeVariable,
+  fontFamily,
+  fontWeight,
   color,
-  background,
-  border,
-  spacing,
-  typeface,
-  transition,
-  shadow,
-} from "./constants";
+  textColor,
+  backgroundColor,
+} from './customProperties';
 
-export interface CoterminousStyledThemeProps {
-  color: ColorProps;
-  background: BackgroundProps;
-  border: BorderProps;
-  spacing: SpacingProps;
-  typeface: TypefaceProps;
-  transition: TransitionProps;
-  shadow: ShadowProps;
-}
-
-export const theme: CoterminousStyledThemeProps = {
-  color,
-  background,
-  border,
-  spacing,
-  typeface,
-  transition,
-  shadow,
+export const theme = {
+  color: setThemeVariable(color),
+  textColor: setThemeVariable(textColor),
+  backgroundColor: setThemeVariable(backgroundColor),
+  space: setThemeVariable(space),
+  borderRadius: setThemeVariable(borderRadius),
+  lineHeight: setThemeVariable(lineHeight),
+  fontSize: setThemeVariable(fontSize),
+  fontFamily: setThemeVariable(fontFamily),
+  fontWeight: setThemeVariable(fontWeight),
 };

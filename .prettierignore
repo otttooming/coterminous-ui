@@ -1,2 +1,11 @@
 package.json
 package-lock.json
+
+# TypeScript compiled target
+dist/
+
+# NextJS compiled files
+.next/
+
+# Jest coverage report
+coverage/

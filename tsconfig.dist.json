@@ -2,6 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
+    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "outDir": "./dist"
   },
