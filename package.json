@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook --ci",
+    "start": "start-storybook -p 9001 -c .storybook --ci",
     "build": "npm run clean && NODE_ENV=production webpack && npm run build:types",
     "build:lib": "npm run build",
     "build:lib:watch": "npm run build:watch",
