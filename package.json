@@ -1,10 +1,10 @@
 {
-  "name": "@coterminous/ui-lib",
+  "name": "@coterminous/ui",
   "version": "1.0.0",
   "description": "Reusable components for React projects",
   "repository": {
     "type": "git",
-    "url": "https://github.com/otttooming/@coterminous/ui-lib.git"
+    "url": "https://github.com/otttooming/coterminous-ui.git"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
