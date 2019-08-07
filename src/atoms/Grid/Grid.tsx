@@ -4,7 +4,7 @@ import { theme } from '../../common/styles/theme';
 import {
   GridGapProps,
   gridGap,
-  GridTemplatesAreasProps,
+  GridTemplateAreasProps,
   gridTemplateRows,
   gridTemplateColumns,
   GridTemplateColumnsProps,
@@ -19,7 +19,7 @@ interface WrapperProps
   extends StyleSystemCommonProps,
     StyleSystemSpaceProps,
     GridGapProps,
-    GridTemplatesAreasProps,
+    GridTemplateAreasProps,
     GridTemplateRowsProps,
     GridTemplateColumnsProps {}
 
