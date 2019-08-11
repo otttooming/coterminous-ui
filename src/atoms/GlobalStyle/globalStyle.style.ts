@@ -5,7 +5,7 @@ import { customProperties } from '../../common/styles/customProperties';
 export const globalStyleCss = css`
   ${customProperties}
 
-  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
 
   * {
     box-sizing: border-box;
