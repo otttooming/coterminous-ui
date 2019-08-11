@@ -61,7 +61,7 @@ jspm_packages/
 coverage/
 
 # TypeScript compiled target
-**/dist/
+dist/
 
 # WebStorm/IntelliJ
 .idea/
