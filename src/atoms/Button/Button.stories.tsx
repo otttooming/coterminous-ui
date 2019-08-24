@@ -4,6 +4,7 @@ import Button from '.';
 import { text } from '@storybook/addon-knobs';
 import Section from '../Section';
 import StorybookWrapper from '../../common/storybookHelpers/StorybookWrapper';
+import { BookOpen } from 'react-feather';
 
 const stories = storiesOf('Button', module);
 stories.add('Button', () => {
@@ -19,6 +20,14 @@ stories.add('Button', () => {
       </Section>
       <Section>
         <Button variant="link">{content}</Button>
+      </Section>
+      <Section>
+        <Button icon={<BookOpen />}>{content}</Button>
+      </Section>
+      <Section>
+        <Button icon={<BookOpen />} variant="link">
+          {content}
+        </Button>
       </Section>
     </StorybookWrapper>
   );
