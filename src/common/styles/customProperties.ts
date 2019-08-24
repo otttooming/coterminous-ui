@@ -33,7 +33,7 @@ interface CustomPropertyGeneratorReturn<K extends string> {
 }
 
 type CustomPropertyGeneratorReturnObject<K extends string> = {
-  [Key in K]: CustomPropertyGeneratorReturn<K>
+  [Key in K]: CustomPropertyGeneratorReturn<K>;
 };
 
 function setCustomPropertyGenerator<K extends string>(
@@ -57,7 +57,7 @@ function setCustomPropertyGenerator<K extends string>(
 }
 
 type ThemeVariableReturn<K extends string> = {
-  [Key in K]: CustomPropertyGeneratorReturn<K>['variable']
+  [Key in K]: CustomPropertyGeneratorReturn<K>['variable'];
 };
 
 export function setThemeVariable<K extends string>(
