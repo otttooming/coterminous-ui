@@ -148,7 +148,7 @@ export const fontFamily = setCustomPropertyGenerator<'primary' | 'secondary'>(
 );
 
 export const fontWeight = setCustomPropertyGenerator<
-  'light' | 'normal' | 'bold'
+  'light' | 'normal' | 'semiBold' | 'bold'
 >('font-weight', [
   {
     key: 'light',
@@ -157,6 +157,10 @@ export const fontWeight = setCustomPropertyGenerator<
   {
     key: 'normal',
     value: '400',
+  },
+  {
+    key: 'semiBold',
+    value: '600',
   },
   {
     key: 'bold',
