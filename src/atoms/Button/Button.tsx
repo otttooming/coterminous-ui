@@ -11,7 +11,7 @@ const Wrapper = styled.button<WrapperProps>`
   margin: 0;
   border: 0;
   cursor: pointer;
-  padding: 0 ${theme.space.l};
+  padding: 0 ${theme.space.m};
   display: inline-flex;
   align-items: center;
   overflow: hidden;
