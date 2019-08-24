@@ -28,14 +28,14 @@
   "author": "Ott Tooming",
   "license": "ISC",
   "dependencies": {
-    "downshift": "^3.2.10",
+    "downshift": "^3.2.12",
     "react-photoswipe": "1.3.0",
     "react-popper": "^1.3.3",
-    "styled-system": "^5.0.18"
+    "styled-system": "^5.0.21"
   },
   "peerDependencies": {
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "styled-components": "4.3.2"
   },
   "devDependencies": {
@@ -63,7 +63,7 @@
     "@types/jest": "24.0.17",
     "@types/jest-cli": "23.6.0",
     "@types/prettier": "1.18.1",
-    "@types/react": "16.8.24",
+    "@types/react": "16.9.1",
     "@types/react-dom": "16.8.5",
     "@types/rimraf": "2.0.2",
     "@types/storybook__addon-knobs": "5.0.3",
@@ -73,7 +73,7 @@
     "@types/webpack": "4.32.1",
     "babel-loader": "8.0.6",
     "babel-plugin-import": "1.12.0",
-    "downshift": "^3.2.10",
+    "downshift": "^3.2.12",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "enzyme-to-json": "3.4.0",
@@ -81,8 +81,8 @@
     "jest-cli": "24.8.0",
     "nodemon": "1.19.1",
     "prettier": "1.18.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "styled-components": "4.3.2",
     "react-feather": "2.0.3",
     "react-popper": "1.3.3",
