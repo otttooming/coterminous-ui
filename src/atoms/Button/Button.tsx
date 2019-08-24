@@ -23,7 +23,7 @@ const Wrapper = styled.button<WrapperProps>`
   height: ${theme.space.xl};
   line-height: ${theme.space.xl};
   font-size: ${theme.fontSize.s};
-  font-weight: ${theme.fontWeight.bold};
+  font-weight: ${theme.fontWeight.semiBold};
   user-select: none;
 
   ${({ variant }) => (variant === 'link' ? styles.link : styles.button)}
