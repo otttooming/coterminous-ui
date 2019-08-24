@@ -7,7 +7,9 @@ export const button = css`
   border-radius: ${theme.borderRadius.s};
 `;
 
-export const link = css``;
+export const link = css`
+  background-color: transparent;
+`;
 
 export const IconContainer = styled.span`
   display: flex;
