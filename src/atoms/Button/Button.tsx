@@ -7,7 +7,7 @@ import { StyleSystemCommonProps } from '../../common/styleSystem/molecules/commo
 import { StyleSystemSpaceProps } from '../../common/styleSystem/molecules/space';
 import * as styles from './Button.styles';
 
-const Wrapper = styled.button<{ variant?: string }>`
+const Wrapper = styled.button<WrapperProps>`
   margin: 0;
   border: 0;
   cursor: pointer;
@@ -32,7 +32,13 @@ const Wrapper = styled.button<{ variant?: string }>`
 
 interface Props {
   onClick?: () => void;
-  variant?: 'link';
+}
+
+interface WrapperProps {
+  /**
+   * Add specific `button` or `a` tag styles irrespective of underlying semantic tag.
+   */
+  variant?: 'link' | 'button';
 }
 
 type PartialAttributes = Omit<
@@ -41,6 +47,7 @@ type PartialAttributes = Omit<
 >;
 
 export type ButtonProps = Props &
+  WrapperProps &
   PartialAttributes &
   StyleSystemSpaceProps &
   StyleSystemCommonProps;
