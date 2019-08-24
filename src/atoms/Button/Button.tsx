@@ -1,15 +1,15 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { styleSystemSpace } from '../../common/styleSystem';
 import { theme } from '../../common/styles/theme';
 import { Omit } from 'utility-types';
 import { StyleSystemCommonProps } from '../../common/styleSystem/molecules/common';
 import { StyleSystemSpaceProps } from '../../common/styleSystem/molecules/space';
+import * as styles from './Button.styles';
 
-const Wrapper = styled.button`
+const Wrapper = styled.button<{ variant?: string }>`
   margin: 0;
   border: 0;
-  border-radius: ${theme.borderRadius.s};
   cursor: pointer;
   padding: 0 ${theme.space.l};
   display: inline-flex;
@@ -24,15 +24,15 @@ const Wrapper = styled.button`
   line-height: ${theme.space.xl};
   font-size: ${theme.fontSize.s};
   font-weight: ${theme.fontWeight.bold};
-  background-color: ${theme.color.primary};
-  color: ${theme.textColor.secondary};
   user-select: none;
 
+  ${({ variant }) => (variant === 'link' ? styles.link : styles.button)}
   ${styleSystemSpace}
 `;
 
 interface Props {
   onClick?: () => void;
+  variant?: 'link';
 }
 
 type PartialAttributes = Omit<

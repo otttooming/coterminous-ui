@@ -17,6 +17,9 @@ stories.add('Button', () => {
       <Section>
         <Button>{content}</Button>
       </Section>
+      <Section>
+        <Button variant="link">{content}</Button>
+      </Section>
     </StorybookWrapper>
   );
 });
