@@ -16,7 +16,9 @@ stories.add('Link', () => {
   return (
     <StorybookWrapper>
       <Section>
-        <Link>{content}</Link>
+        <Link onClick={() => {}} href="https://github.com/otttooming">
+          {content}
+        </Link>
       </Section>
       <Section>
         <Link variant="link">{content}</Link>
