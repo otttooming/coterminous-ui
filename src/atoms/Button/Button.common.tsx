@@ -27,7 +27,6 @@ const Wrapper = styled.button<WrapperProps>`
 `;
 
 interface Props {
-  onClick?: () => void;
   /**
    * Externally sourced icon component support
    */
@@ -49,24 +48,9 @@ export type ButtonProps = Props &
   StyleSystemSpaceProps &
   StyleSystemCommonProps;
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  icon,
-  ...restProps
-}) => {
-  const handleClick = (
-    event: React.SyntheticEvent<HTMLButtonElement | HTMLAnchorElement>,
-  ) => {
-    event.preventDefault();
-
-    if (onClick) {
-      onClick();
-    }
-  };
-
+const Button: React.FC<ButtonProps> = ({ children, icon, ...restProps }) => {
   return (
-    <Wrapper {...restProps} onClick={handleClick}>
+    <Wrapper {...restProps}>
       {icon && <styles.IconContainer>{icon}</styles.IconContainer>}
 
       {children}
