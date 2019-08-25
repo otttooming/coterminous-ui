@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VisibleInput, HiddenInput, Wrapper } from './checkbox.style';
-import { Omit } from 'utility-types';
 
 export enum CheckboxType {
   CHECKBOX = 'checkbox',

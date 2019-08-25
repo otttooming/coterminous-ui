@@ -4,7 +4,6 @@ import Image from '../../atoms/Image';
 import Section from '../../atoms/Section';
 import { Lightbox as LightboxStyled } from './Lightbox.style';
 import { Image as ImageItem, ImageSizes } from '../../atoms/Image/Image.types';
-import { Omit } from 'utility-types';
 
 interface PhotoSwipeGalleryOptions {
   history: boolean;
