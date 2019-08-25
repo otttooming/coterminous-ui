@@ -8,8 +8,12 @@ export type PartialButtonProps = Omit<ButtonProps, keyof ButtonElement>;
 
 export type LinkProps = PartialButtonProps;
 
-const Link: React.FC<LinkProps> = ({ variant = 'link', ...restProps }) => {
-  return <Button {...restProps} variant={variant} />;
+const Link: React.FC<LinkProps> = ({
+  variant = 'link',
+  as = 'a',
+  ...restProps
+}) => {
+  return <Button {...restProps} as={as} variant={variant} />;
 };
 
 export default Link;
