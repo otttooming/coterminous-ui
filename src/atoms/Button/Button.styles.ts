@@ -9,6 +9,11 @@ export const button = css`
 
 export const link = css`
   background-color: transparent;
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
 `;
 
 export const IconContainer = styled.span`
