@@ -5,6 +5,7 @@ import { theme } from '../../common/styles/theme';
 import { StyleSystemCommonProps } from '../../common/styleSystem/molecules/common';
 import { StyleSystemSpaceProps } from '../../common/styleSystem/molecules/space';
 import * as styles from './Button.styles';
+import { PolymorphicElement } from '../../common/polymorphicElement/polymorphicElement.types';
 
 const Wrapper = styled.button<WrapperProps>`
   margin: 0;
@@ -48,6 +49,7 @@ export type ButtonProps = Props &
   WrapperProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
+  PolymorphicElement &
   StyleSystemSpaceProps &
   StyleSystemCommonProps;
 
