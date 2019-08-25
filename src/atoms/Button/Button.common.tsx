@@ -16,7 +16,6 @@ const Wrapper = styled.button<WrapperProps>`
   overflow: hidden;
   position: relative;
   outline: none;
-  min-width: ${theme.space.xl};
   justify-content: center;
   font: inherit;
   font-size: ${theme.fontSize.s};
