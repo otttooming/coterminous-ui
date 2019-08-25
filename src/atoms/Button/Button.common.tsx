@@ -11,7 +11,6 @@ const Wrapper = styled.button<WrapperProps>`
   margin: 0;
   border: 0;
   cursor: pointer;
-  padding: 0 ${theme.space.m};
   display: inline-flex;
   align-items: center;
   overflow: hidden;
@@ -20,8 +19,6 @@ const Wrapper = styled.button<WrapperProps>`
   min-width: ${theme.space.xl};
   justify-content: center;
   font: inherit;
-  height: ${theme.space.xl};
-  line-height: ${theme.space.xl};
   font-size: ${theme.fontSize.s};
   font-weight: ${theme.fontWeight.semiBold};
   user-select: none;
