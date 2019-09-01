@@ -12,6 +12,7 @@ export const button = css`
 
 export const link = css`
   background-color: transparent;
+  color: inherit;
   text-decoration: none;
   padding: 0;
   margin: 0;
