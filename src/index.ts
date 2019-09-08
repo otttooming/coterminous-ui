@@ -2,6 +2,8 @@ export { theme } from './common/styles/theme';
 
 export { default as GlobalStyle } from './atoms/GlobalStyle';
 
+export { default as Avatar } from './atoms/Avatar';
+
 export { default as Heading } from './atoms/Heading';
 export { default as Button } from './atoms/Button';
 
