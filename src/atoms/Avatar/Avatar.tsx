@@ -8,7 +8,6 @@ import {
 } from './Avatar.styles';
 
 interface AvatarProps {
-  initials?: React.ReactNode;
   /**
    * Main content that would most commonly include author title.
    */
