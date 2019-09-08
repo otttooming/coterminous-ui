@@ -19,7 +19,7 @@ stories.add('Avatar', () => {
     <StorybookWrapper>
       <Section>
         <Avatar>
-          <User size="25" />
+          <User />
         </Avatar>
       </Section>
 
