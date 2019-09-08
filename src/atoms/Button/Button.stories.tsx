@@ -29,6 +29,9 @@ stories.add('Button', () => {
           {content}
         </Button>
       </Section>
+      <Section>
+        <Button icon={<BookOpen />} />
+      </Section>
     </StorybookWrapper>
   );
 });

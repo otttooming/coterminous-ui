@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = ({ children, icon, ...restProps }) => {
     <Wrapper {...restProps}>
       {icon && <styles.IconContainer>{icon}</styles.IconContainer>}
 
-      {children}
+      {children && <span>{children}</span>}
     </Wrapper>
   );
 };
