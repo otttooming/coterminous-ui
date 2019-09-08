@@ -19,8 +19,11 @@ export const MainWrapper = styled.span`
   overflow: hidden;
 
   > * {
-    object-fit: contain;
     width: 100%;
+  }
+
+  > svg {
+    width: ${theme.fontSize.l};
   }
 `;
 
