@@ -12,7 +12,7 @@ export const globalStyleCss = css`
   }
 
   html {
-    font-size: 16px;
+    font-size: 18px;
 
     -webkit-text-size-adjust: none;
     -webkit-text-size-adjust: 100%;
